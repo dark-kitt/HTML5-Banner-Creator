@@ -163,7 +163,7 @@
 			return $html;
 		}
 
-		public static function set_namespace($banner_config, $all_IDs_CLASSes_TAGs, $HTML_content = null , $SCSS_content = null, $JS_content = null, $force_set_namespace = null)
+		public static function set_namespace($banner_config, $all_IDs_CLASSes_TAGs, $HTML_content = null , $SCSS_content = null, $JS_content = null)
 		{
 			$SCSS_ids = $all_IDs_CLASSes_TAGs[0][0];
 			$SCSS_classes = $all_IDs_CLASSes_TAGs[0][1];
@@ -184,7 +184,7 @@
 			$JS_cl_in_object_KSJS = $all_IDs_CLASSes_TAGs[2][1][5];
 			$JS_gcl_KSJS = $all_IDs_CLASSes_TAGs[2][1][6];
 
-			if ( $banner_config['namespace'] || $force_set_namespace )
+			if ( $banner_config['namespace'] )
 			{
 				if ( count($HTML_ids) > 0 )
 				{
