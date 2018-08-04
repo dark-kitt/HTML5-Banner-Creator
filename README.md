@@ -20,7 +20,7 @@ No suitable VM unfortunately available? [Download my](https://bitbucket.org/made
 * node.js v10.8.0
 * mysql 15.1
 * curl 7.52.1
-  
+
 Was created on macOS 10.13.6 via [VirtualBox 5.2.12](https://virtualbox.org/)
 
 ## Features
@@ -93,7 +93,7 @@ Set up your project with the **`project_config.php`** file in the root directory
 ---
 
 ### unusedCSS
-Matched only `getElementById`, `$(#id)`, `id: id`, `gid(id)`, `getElementsByClassName`, `addClass`, `hasClass`, `removeClass`, `$(.class)`, `class: class`, `cl: class` and `gcl(class)` in the JavaScript files.
+Matched only `getElementById`, `$(#id)`, `id: id`, `gid(id)`, `getElementsByClassName`, `addClass`, `hasClass`, `removeClass`, `$(.class)`, `class: class`, `cl: class` and `gcl(class)` in the JavaScript files and the function doesn't compare HTML tags in the SCSS or JavaScript files (otherwise you get multiple unused HTML tags).
 
 ### export
 Place the required advertiser scripts in `/js/advertiser-scripts`. Only PHP files, like the examples. Placeholder: `###width###` `###height###`
