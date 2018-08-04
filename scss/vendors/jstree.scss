@@ -1,0 +1,65 @@
+[class*="jstree-"] {
+	display: block;
+	cursor: pointer;
+
+	outline: none;
+
+	color: $white;
+
+	a:link, a:visited {
+		text-decoration: inherit;
+	}
+
+	a {
+		white-space: nowrap;
+		padding-top: 5px;
+		padding-bottom: 5px;
+		margin-bottom: 5px;
+	}
+
+	&.jstree-icon {
+		display: inline-block;
+		width: 10px;
+		height: 10px;
+
+		margin-right: 10px;
+		margin-left: 10px;
+
+		-webkit-transform: rotate(90deg);
+		-ms-transform: rotate(90deg);
+		transform: rotate(90deg);
+
+		-webkit-transition: transform 0.2s linear;
+		transition: transform 0.2s linear;
+	}
+
+	&[role='group'] {
+		padding-left: 10px;
+	}
+
+	&.jstree-container-ul {
+		padding-left: 0px;
+	}
+
+	&.jstree-icon.jstree-ocl {
+		display: none
+	}
+}
+
+#jstree .jstree-leaf > a > i {
+	position: relative;
+	top: 2px;
+
+	width: 15px;
+	height: 15px;
+
+	background-image: url("assets/playbutton.svg") !important;
+	background-repeat: no-repeat  !important;
+	-webkit-transform: rotate(0deg) !important;
+	-ms-transform: rotate(0deg) !important;
+	transform: rotate(0deg) !important;
+}
+
+.jstree-default .jstree-clicked {
+  background-color: $light-black;
+}

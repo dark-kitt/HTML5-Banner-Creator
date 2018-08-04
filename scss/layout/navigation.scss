@@ -1,0 +1,26 @@
+.nav {
+	position: absolute;
+	top: 0;
+	height: 50px;
+}
+
+.nav-left {
+	left: 300px;
+}
+
+.nav-right {
+	right: 300px;
+}
+
+.nav-item {
+	white-space: nowrap;
+	padding: 17px;
+}
+
+.nav-item-left {
+	float: left;
+}
+
+.nav-item-right {
+	float: right;
+}

@@ -1,0 +1,82 @@
+@mixin font-size($sizeValue: 16) {
+	font-size: $sizeValue + px;
+	font-size: (($sizeValue/1.6)/10) + rem;
+}
+
+$webkit: true !default;
+$moz: false !default;
+$ms: false !default;
+$o: false !default;
+
+@mixin prefixed($property, $value) {
+  @if $webkit == true {
+    -webkit-#{$property}: #{$value};
+  }
+
+  @if $moz == true {
+    -moz-#{$property}: #{$value};
+  }
+
+  @if $ms == true {
+    -ms-#{$property}: #{$value};
+  }
+
+  @if $o == true {
+    -o-#{$property}: #{$value};
+  }
+
+  #{$property}: #{$value};
+}
+
+@mixin hardwareAccel() {
+	@include prefixed(transform, perspective(1px) translateZ(0));
+}
+
+@mixin improveAntiAlias() {
+	box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+}
+
+@mixin forceBlockLevel() {
+	display: inline-block;
+	vertical-align: middle;
+}
+
+@mixin hacks() {
+	@include forceBlockLevel();
+	@include hardwareAccel();
+	@include improveAntiAlias();
+}
+
+@mixin bounce-to-top($font-color, $background) {
+	@include hacks();
+
+	@include prefixed(transition-property, color);
+	@include prefixed(transition-duration, 0.5s);
+
+	&:before {
+		content: "";
+		position: absolute;
+		z-index: -1;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		background: $background;
+		@include prefixed(transform, scaleY(0));
+		@include prefixed(transform-origin, 50% 100%);
+		@include prefixed(transition-property, transform);
+		@include prefixed(transition-duration, 0.5s);
+		@include prefixed(transition-timing-function, ease-out);
+	}
+
+	&:hover,
+	&:focus,
+	&:active {
+		color: $font-color;
+
+		&:before {
+			@include prefixed(transform, scaleY(1));
+			@include prefixed(transition-timing-function, cubic-bezier(.52,1.64,.37,.66));
+		}
+	}
+}

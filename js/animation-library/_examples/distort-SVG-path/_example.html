@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>wave</title>
+        <style>
+			div {
+				position: absolute;
+				left: 50%;
+				top: 50%;
+				-webkit-transform: translate(-50%, -50%);
+				transform: translate(-50%, -50%);
+			}
+			svg {
+				display: block;
+			}
+			h2 {
+				position: relative;
+				top: 150px;
+			}
+        </style>
+		<script type="text/javascript" src="../_base/_base.js"></script>
+		<script type="text/javascript" src="../_global-functions/_global-functions.js"></script>
+		<script type="text/javascript" src="distortPath.js"></script>
+    </head>
+    <body>
+        <div>
+			<div>
+				<svg xmlns="http://www.w3.org/2000/svg" width="469.39" height="292.6" viewBox="0 0 469.39 92.6">
+					<path id="path" d="M3.58,26.48c136,179,339-99,463,0" fill="none" stroke="#000" stroke-miterlimit="10" stroke-width="9"/>
+				</svg>
+			</div>
+			<div>
+				<svg xmlns="http://www.w3.org/2000/svg" width="469.39" height="292.6" viewBox="0 0 469.39 92.6">
+					<g>
+						<path d="M3.58 26.48c136 179 339-99 463 0" fill="none" stroke="#000" stroke-miterlimit="10" stroke-width="9" stroke-dasharray="10 30"/>
+					</g>
+				</svg>
+			</div>
+			<h2>Distort SVG path to a specified new path. The new path has to have the same number of anchors like the old one.</h2>
+        </div>
+        <script>
+
+			/* usage
+			 * distortPath({
+					id: 'redBox', set the element by id: 'id' or el: index[i] (required, string)
+					delay: 0, set the delay in milliseconds (optional/defalut 1000, number)
+					fps: 120, frames per second [the loop is build with requestAnimationFrame] (optional/defalut 120, number)
+					loop: 5, how many loops (optional/defalut 1, number)
+					calcStep: 1, calcStep is the count value (optional/defalut 1, number)
+					newPath: 'M3.58,26.48c151-136,274,172,463,0', is the new path for the element (required, string)
+	 		 * });
+			*/
+
+			distortPath({
+				id: 'path',
+				delay: 0,
+				fps: 30,
+				loops: 0,
+				infinite: true,
+				calcStep: 2,
+				newPath: 'M3.58,26.48c151-136,274,172,463,0'
+			});
+
+        </script>
+    </body>
+
+</html>

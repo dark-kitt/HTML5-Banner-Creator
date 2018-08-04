@@ -1,0 +1,41 @@
+@import "client-base.scss";
+
+#click-layer {
+	position: absolute;
+	width: 160px;
+	height: 600px;
+	cursor:pointer;
+	z-index: 13;
+	background-color: rgba(125,125,125,1);
+}
+
+#stage {
+	position: relative;
+	width: 160px;
+	height: 600px;
+	background-color:#FFFFFF;
+	overflow:hidden;
+	border-top: 1px solid #000;
+	border-bottom: 1px solid #000;
+	border-left: 1px solid #000;
+	box-sizing: border-box;
+}
+
+#stage:after {
+	position: absolute;
+	right: 0;
+	z-index: 22;
+	top: 89px;
+	height: 511px;
+	content: "";
+	border-right: 1px solid #000;
+}
+
+#sequence-one {
+	position: absolute;
+	width: 160px;
+	height: 600px;
+	cursor:pointer;
+	z-index: 13;
+	background-color: rgba(125,125,125,1);
+}

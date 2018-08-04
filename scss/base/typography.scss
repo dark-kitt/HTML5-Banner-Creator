@@ -1,0 +1,29 @@
+.text {
+	color: $white;
+	font-weight: 300;
+	line-height: 1;
+	font-family: 'Mukta', Arial, sans-serif;
+
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+.text-dark {
+	color: $light-black;
+}
+
+.text-regular {
+	font-weight: 500;
+}
+
+.text-size-normal {
+	@include font-size(16);
+}
+
+.text-size-small {
+	@include font-size(14);
+}
+
+.text-size-extra-small {
+	@include font-size(12);
+}

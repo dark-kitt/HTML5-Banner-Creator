@@ -1,0 +1,57 @@
+.button {
+	text-align: center;
+	padding: 15px 50px;
+	cursor: pointer;
+	outline: none;
+}
+
+.button-bright {
+	border: 1px solid $light-black;
+	@include bounce-to-top($white, $light-black);
+	background-color: $white;
+}
+
+.button-dark {
+	border: 1px solid $white;
+	@include bounce-to-top($light-black, $white);
+	background-color: $light-black;
+}
+
+.button-center {
+	left: 50%;
+
+	-webkit-transform: perspective(1px) translateZ(0) translateX(-50%);
+	-ms-transform: perspective(1px) translateZ(0) translateX(-50%);
+	transform: perspective(1px) translateZ(0) translateX(-50%);
+}
+
+.export-button {
+	position: absolute;
+	bottom: 5px;
+	width: calc(100% - 10px);
+}
+
+.iframe-button {
+	position: fixed;
+	bottom: 10px;
+
+	xmp {
+		display: inline-block
+	}
+}
+
+.hyphenator-button {
+	position: relative;
+
+	margin-top: 100px;
+}
+
+.button-small {
+	position: absolute;
+	display: block;
+
+	right: 0;
+
+	padding: 8px 14px;
+	margin-top: 5px;
+}

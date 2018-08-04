@@ -1,0 +1,28 @@
+body {
+	background-color: $white;
+}
+
+.wrapper {
+	position: relative;
+	width: 100%;
+}
+
+#banner {
+	position: relative;
+	display: inline-block;
+
+	left: 50%;
+	-webkit-transform: translateX(-50%);
+	    -ms-transform: translateX(-50%);
+	        transform: translateX(-50%);
+
+	padding-top: 100px;
+
+	iframe {
+		position: relative;
+	}
+}
+
+a:hover {
+	text-decoration: underline;
+}

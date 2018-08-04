@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>svg-along-path</title>
+		<style>
+			svg {
+				border: 3px solid #eee;
+				display: block;
+				margin: 1em auto;
+			}
+			#greenBox {
+				position: absolute;
+				left: 300px;
+				top: 500px;
+				background: green;
+				width: 100px;
+				height: 100px;
+			}
+			#redBox {
+				position: absolute;
+				left: 500px;
+				top: 500px;
+				background: red;
+				width: 30px;
+				height: 30px;
+			}
+		</style>
+		<script type="text/javascript" src="../_base/_base.js"></script>
+		<script type="text/javascript" src="../_global-functions/_global-functions.js"></script>
+		<script type="text/javascript" src="alongPath.js"></script>
+	</head>
+	<body>
+		<svg xmlns="http://www.w3.org/2000/svg" width="450" height="300" viewBox="0 0 450 300">
+			<path id="line-path" d="M10.58,26.48c136,179,339-99,430,0" fill="none" stroke="#000" stroke-miterlimit="10" stroke-width="5"/>
+			<path id="circle-path" d=" M 150, 110 m -75, 0 a 75,75 0 1,0 150,0 a 75,75 0 1,0 -150,0 " fill="none" stroke="#000" stroke-miterlimit="10" stroke-width="5"/>
+			<path class="path" d="M8,109.48c136,179,135.54,0,220,0S331,276,400,176C463.61,83.82,319-29,192,51S154.5,223,285,223,387,81,319,85" fill="none" stroke="#000" stroke-miterlimit="10" stroke-width="5"/>
+			<rect class="elem" width="40" height="40" fill="tomato"></rect>
+			<rect id="elem2" width="40" height="40" fill="tomato"></rect>
+		</svg>
+		<div id="greenBox"></div>
+		<div id="redBox"></div>
+		<script>
+				/* usage
+				 * alongPath({
+						id: 'redBox', set the element by id: 'id' or el: index[i] (required, string)
+						path: 'circle-path', set the path by id: 'id' or el: index[i] (e.g. pel: index[i]) (required, string)
+						setPathPoints: 2, this value is for the loop which gets the coordinates from the path e.g. every second points (optional/defalut 2, number)
+						align: 'center', the alignment for the element [left,left-top,left-bottom,center,center-top,center-bottom,right,right-top,right-bottom] (optional/defalut center, string)
+						fps: 120, frames per second [the loop is build with requestAnimationFrame] (optional/defalut 120, number)
+						direction: 'forwards', the element moves forwards or backwards (optional/defalut forwards, string)
+						loop: true, should the element loop (optional/defalut false, boolean)
+						loops: 0, how many loops / 0 is for endless (optional/defalut 2, number)
+						alternate: false, shall the element move forwards and then backwards (optional/defalut false, boolean)
+						percentage: false, is the path drawn in percentage values (optional/defalut false, boolean)
+						delay: 0, set the delay in milliseconds (optional/defalut 1000, number)
+						rotate: false, shall the element rotate along the path (optional/defalut false, boolean)
+						stop: 70 is a percentage value where the element should stop (optional/defalut 100, number)
+		 		 * });
+				*/
+
+				var testPath =  gcl('path');
+				var testElem =  gcl('elem');
+				alongPath({
+					el: testElem[0],
+					pel: testPath[0],
+					setPathPoints: 5,
+					align: 'center',
+					fps: 120,
+					direction: 'backwards',
+					loop: true,
+					loops: 0,
+					alternate: true,
+					percentage: false,
+					delay: 0,
+					rotate: true,
+					stop: 80
+				});
+
+				alongPath({
+					id: 'elem2',
+					path: 'line-path',
+					setPathPoints: 3,
+					align: 'center-bottom',
+					fps: 120,
+					direction: 'forwards',
+					loop: true,
+					loops: 0,
+					alternate: false,
+					percentage: false,
+					delay: 0,
+					rotate: false,
+					stop: 50
+				});
+
+				alongPath({
+					id: 'redBox',
+					path: 'circle-path',
+					setPathPoints: 3,
+					align: 'center',
+					fps: 120,
+					direction: 'forwards',
+					loop: true,
+					loops: 0,
+					alternate: false,
+					percentage: false,
+					delay: 0,
+					rotate: true,
+					stop: 100
+				});
+
+				alongPath({
+					id: 'greenBox',
+					path: 'line-path',
+					setPathPoints: 3,
+					align: 'center-bottom',
+					fps: 120,
+					direction: 'backwards',
+					loop: true,
+					loops: 0,
+					alternate: true,
+					percentage: false,
+					delay: 0,
+					rotate: false,
+					stop: 50
+				});
+
+		</script>
+
+	</body>
+</html>

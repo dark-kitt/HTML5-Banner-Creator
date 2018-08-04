@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>addClass-hasClass-removeClass</title>
+	<style>
+		#redBox, #blueBox, .blueBox{
+			position: relative;
+			left: 200px;
+			width: 250px;
+			height: 250px;
+			color: white;
+			font-size: 30px;
+			font-family: Arial;
+			line-height: 250px;
+			text-align: center;
+		}
+
+		#redBox {
+			background-color: red;
+		}
+		#blueBox {
+			background-color: blue;
+		}
+		.blueBox {
+			background-color: blue;
+			margin-top: 10px;
+		}
+		.animation{
+			-webkit-animation: move 2s linear 0.5s forwards;
+			animation: move 2s linear 0.5s forwards;
+		}
+		-webkit-@keyframes move {
+			0%	 {left: 200px;}
+			50%  {left: 800px;}
+			100% {left: 200px;}
+		}
+		@keyframes move {
+			0%	 {left: 200px;}
+			50%  {left: 800px;}
+			100% {left: 200px;}
+		}
+	</style>
+	</head>
+
+	<body>
+		<h2>Add a animation-class and remove it in addClass after 2.5 sec. Check it with hasClass.</h2>
+		<div id="redBox"></div>
+		<br/>
+
+		<h2>Add a animation-class and remove it manual with removeClass after 2.5 sec. Check it with hasClass.</h2>
+		<div id="blueBox"></div>
+		<br/>
+
+		<h2>Add a animation-class on class elements</h2>
+		<div class="blueBox"></div>
+		<div class="blueBox"></div>
+
+		<script>
+		var gid = function (id) {
+			return document.getElementById(id);
+		},
+		gcl = function (cl) {
+			return document.getElementsByClassName(cl);
+		};
+		var getClassName = function(cls) {
+		        return new RegExp('(?:\\s+|^)(' + cls + '\\b)(?:\\s+|$)');
+		    },
+		    hasClass = function(e, cls) {
+		        if (e instanceof SVGElement) {
+		            return e.className.baseVal.match(getClassName(cls)) === null ? false : true;
+		        } else {
+		            return e.className.match(getClassName(cls)) === null ? false : true;
+		        }
+		    },
+		    removeClass = function(e, cls) {
+				if (hasClass(e, cls)) {
+			        if (e instanceof SVGElement) {
+						e.className.baseVal = e.className.baseVal.replace(/\s+/g, ' ');
+						if (e.className.match('(?:\\w|\\d)(?:\\s+|^)(' + cls + '\\b)(?:\\s+|$)(?:\\w|\\d)') === null) {
+							e.className.baseVal = e.className.baseVal.replace(getClassName(cls), '');
+						} else {
+							e.className.baseVal = e.className.baseVal.replace(getClassName(cls), ' ');
+						}
+			        } else {
+						e.className = e.className.replace(/\s+/g, ' ');
+						if (e.className.match('(?:\\w|\\d)(?:\\s+|^)(' + cls + '\\b)(?:\\s+|$)(?:\\w|\\d)') === null) {
+							e.className = e.className.replace(getClassName(cls), '');
+						} else {
+							e.className = e.className.replace(getClassName(cls), ' ');
+						}
+			        }
+				}
+		    },
+		    addClass = function(e, o) {
+		        if (!o.remove) {
+		            o.remove = null;
+		        }
+		        if (e instanceof SVGElement) {
+					e.className.baseVal = e.className.baseVal.replace(/\s+/g, ' ');
+		            if (!this.hasClass(e, o.class)) {
+		                if (o.remove !== null) {
+		                    e.className.baseVal += ' ' + o.class;
+		                    setTimeout(function() {
+		                        removeClass(e, o.class);
+		                    }, o.remove);
+		                } else {
+		                    e.className.baseVal += ' ' + o.class;
+		                }
+		            }
+		        } else {
+		            if (!this.hasClass(e, o.class)) {
+		                e.className = e.className.replace(/\s+/g, ' ');
+		                if (o.remove !== null) {
+		                    e.className += ' ' + o.class;
+		                    setTimeout(function() {
+		                        removeClass(e, o.class);
+		                    }, o.remove);
+		                } else {
+		                    e.className += ' ' + o.class;
+		                }
+		            }
+		        }
+		    };
+
+			/* usage
+			 * addClass(-> add the elment e.g. gid('redBox')<-, {
+				class: -> add the class e.g. 'animation'<- (string),
+				remove: -> set the remove-delay (number)<-
+			 * });
+			*/
+
+			/* add and remove in addClass
+			*/
+			var checkRedBox = hasClass(gid('redBox'), 'animation');
+				gid('redBox').innerHTML = checkRedBox;
+			setInterval(function () {
+
+				addClass(gid('redBox'), {
+					class: 'animation',
+					remove: 2500
+				});
+
+				checkRedBox = hasClass(gid('redBox'), 'animation');
+				gid('redBox').innerHTML = checkRedBox;
+
+				setTimeout(function () {
+					checkRedBox = hasClass(gid('redBox'), 'animation');
+					gid('redBox').innerHTML = checkRedBox;
+				}, 2600);
+			}, 4000);
+
+			/* remove manual with removeClass
+			*/
+			var checkBlueBox = hasClass(gid('blueBox'), 'animation');
+				gid('blueBox').innerHTML = checkBlueBox;
+			setInterval(function () {
+				addClass(gid('blueBox'), {
+					class: 'animation'
+				});
+
+				checkBlueBox = hasClass(gid('blueBox'), 'animation');
+				gid('blueBox').innerHTML = checkBlueBox;
+
+				setTimeout(function () {
+					removeClass(gid('blueBox'), 'animation');
+				}, 2500);
+
+				setTimeout(function () {
+					checkBlueBox = hasClass(gid('blueBox'), 'animation');
+					gid('blueBox').innerHTML = checkBlueBox;
+				}, 2600);
+			}, 4000);
+
+			/* addClass on class elemnts
+			*/
+			var blue = gcl('blueBox');
+			for (var i = 0; i < blue.length; i++) {
+				addClass(blue[i],{
+					class: 'animation',
+					remove: 1500
+				});
+			}
+
+		</script>
+	</body>
+</html>

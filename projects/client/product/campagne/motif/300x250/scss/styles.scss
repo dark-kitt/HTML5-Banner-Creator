@@ -1,0 +1,29 @@
+@import "client-base.scss";
+
+#click-layer {
+	position: absolute;
+	width: 300px;
+	height: 250px;
+	cursor:pointer;
+	z-index: 13;
+	background-color: rgba(125,125,125,1);
+}
+
+#stage {
+	position: relative;
+	width: 300px;
+	height: 250px;
+	background-color:#FFFFFF;
+	overflow:hidden;
+	border: 1px solid #000;
+	box-sizing: border-box;
+}
+
+#sequence-one {
+	position: absolute;
+	width: 300px;
+	height: 250px;
+	cursor:pointer;
+	z-index: 13;
+	background-color: rgba(125,125,125,1);
+}

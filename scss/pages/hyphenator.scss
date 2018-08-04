@@ -1,0 +1,98 @@
+.hyphenator {
+		position: relative;
+		display: inline-block;
+
+		width: 100%;
+		max-width: 728px;
+
+		left: 50%;
+		-webkit-transform: translateX(-50%);
+		    -ms-transform: translateX(-50%);
+		        transform: translateX(-50%);
+
+		padding: 50px 0;
+
+		.float-right {
+			float: right;
+		}
+
+		.input-text {
+			display: block;
+			margin-top: 15px;
+
+			input {
+				display: block;
+				width: 100%;
+				border: 1px solid #000;
+				box-sizing: border-box;
+			}
+		}
+
+		.input-char {
+			position: absolute;
+			right: 0;
+			display: inline-block;
+
+			input{
+				border: 1px solid #000;
+				width: 62px;
+			}
+		}
+
+		textarea {
+			display: block;
+			width: 100%;
+
+			border: 1px solid #000;
+
+			margin-top: 5px;
+			padding: 5px;
+
+			box-sizing: border-box;
+		}
+
+		select {
+			margin-left: 10px;
+			margin-top: 5px;
+			border: 1px solid #000;
+			width: 150px;
+			height: 34px;
+		}
+
+		.options {
+			padding: 25px 0;
+			span {
+				display: inline-block;
+				margin-top: 12px;
+			}
+		}
+
+		[type="radio"] {
+			margin-left: 10px;
+			width: 12px;
+			height: 12px;
+		}
+
+		[type="text"] {
+			margin-top: 5px;
+			padding: 5px;
+		}
+
+		xmp{
+			display: inline;
+		}
+
+		#delete-saved-value {
+			display: inline-block;
+			float: right;
+
+			margin-top: 3px;
+			margin-left: 3px;
+
+			height: 36px;
+			width: 36px;
+
+			background: url('../../assets/trash.svg') no-repeat center;
+			cursor: pointer;
+		}
+}

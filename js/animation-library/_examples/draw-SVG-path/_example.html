@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+	<meta charset="utf-8">
+	<title>drawPath</title>
+	<style>
+		div {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			width: 400px;
+			height: 400px;
+			transform: translate(-50%, -50%);
+		}
+	</style>
+	<script type="text/javascript" src="../_base/_base.js"></script>
+	<script type="text/javascript" src="../_global-functions/_global-functions.js"></script>
+	<script type="text/javascript" src="drawPath.js"></script>
+</head>
+
+<body>
+	<div>
+		<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 252.67 262.67">
+              <path id="heartBlue" d="M252.67,39V150.33L126.33,262.67,0,150.33V39L126.33,151.33Z" stroke="#749ab6" stroke-width="2" fill="none"/>
+              <path class="heartRed" d="M125.33,53.33L0,150.33V39L55.67,0Z" stroke="#ff3614" stroke-width="2" fill="none" opacity="0.9"/>
+              <path class="heartRed" d="M197,0l55.67,39V150.33l-125.33-97Z" stroke="#ff3614" stroke-width="2" fill="none" opacity="0.9"/>
+        </svg>
+		<h2>Draw a SVG path with a CSS id or CSS class</h2>
+	</div>
+	<script>
+			/* usage
+			 * drawPath({
+					id: 'redBox', set the element by id: 'id' or el: index[i] (required, string)
+					delay: 0, set the delay in milliseconds (optional/defalut 1000, number)
+					fps: 120, frames per second [the loop is build with requestAnimationFrame] (optional/defalut 120, number)
+					calcStep: 1, calcStep is the count value (optional/defalut 1, number)
+					direction: 'forwards', draw the path forwards or backwards (optional/defalut forwards, string)
+	 		 * });
+			*/
+
+			drawPath({
+				cl: 'heartRed',
+				delay: 1000,
+				fps: 120,
+				calcStep: 1,
+				direction: 'forwards'
+			});
+
+			drawPath({
+				id: 'heartBlue',
+				delay: 1000,
+				fps: 120,
+				calcStep: 2,
+				direction: 'backwards'
+			});
+	</script>
+</body>
+
+</html>

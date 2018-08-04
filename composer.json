@@ -1,0 +1,15 @@
+{
+  "name": "banner/packages",
+  "description": "banner package",
+  "type": "creator",
+  "license": "cc-by-sa",
+  "authors": [{
+    "name": "HTML5 Banner Creator",
+    "email": "info@html5bc.com"
+  }],
+  "minimum-stability": "stable",
+  "require": {
+    "leafo/scssphp": "^0.7.4",
+    "vladkens/autoprefixer": "dev-master"
+  }
+}

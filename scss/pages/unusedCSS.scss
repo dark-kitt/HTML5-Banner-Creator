@@ -1,0 +1,30 @@
+.unusedCSS {
+    padding-top: 60px;
+
+    ul {
+        position: relative;
+        left: 50%;
+        width: 600px;
+        transform: translateX(-50%);
+        border: 12px solid $black;
+        background-color: $light-black;
+
+        margin-bottom: 12px;
+
+        li {
+            padding: 5px;
+            margin-bottom: 5px;
+        }
+
+        :first-child {
+            margin-bottom: 0;
+        }
+        :nth-child(2) {
+            margin-bottom: 20px;
+        }
+        :nth-child(3) {
+            float: right;
+        }
+
+    }
+}
