@@ -15,11 +15,11 @@ $project_config = banner::call_project(
         ],
         [ "floor-ad", [
                 [ "15-sec", [
-                        [1200,400]
+                        [1200,200]
                     ]
                 ],
                 [ "30-sec", [
-                        [1200,400]
+                        [1200,200]
                     ]
                 ],
                 ["DRAW_SVG","CLIENT_SCSS_FILE"]

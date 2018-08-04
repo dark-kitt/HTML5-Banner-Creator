@@ -1,7 +1,7 @@
 #click-layer {
 	position: absolute;
 	width: 1200px;
-	height: 400px;
+	height: 200px;
 	cursor:pointer;
 	z-index: 13;
 	background-color: rgba(125,125,125,1);
@@ -10,7 +10,7 @@
 #stage {
 	position: relative;
 	width: 1200px;
-	height: 400px;
+	height: 200px;
 	background-color:#FFFFFF;
 	overflow:hidden;
 	border: 1px solid #000;
@@ -20,7 +20,7 @@
 #sequence-one {
 	position: absolute;
 	width: 1200px;
-	height: 400px;
+	height: 200px;
 	cursor:pointer;
 	z-index: 13;
 	background-color: rgba(125,125,125,1);
