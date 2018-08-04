@@ -1,7 +1,7 @@
 HTML5 Banner Creator
 ==============
 
-A small tool, which helps to create fast and easily HTML5 Display Ads / HTML5 Banner. Set up your project with multiple banner and fill them with markup or place prepared files. Create templates for banner like Wallpapers or Fireplace Ads and preview, while you are style them, as one assembly. Have a multiple export for different advertiser. Create only HTML5 markup in the **`index.php`** file of each banner, which you would place inside of the **`<body></body>`** tag. The rest of the HTML5 markup is created by the tool. Some examples, to figure out the usage, were created.
+A web application, which helps to create fast and easily HTML5 Display Ads / HTML5 Banner. Set up your project with multiple banner and fill them with markup or place prepared files. Create templates for banner like Wallpapers or Fireplace Ads and preview, while you are style them, as one assembly. Have a multiple export for different advertiser. Create only HTML5 markup in the **`index.php`** file of each banner, which you would place inside of the **`<body></body>`** tag. The rest of the HTML5 markup is created by the tool. Some examples, to figure out the usage, were created.
 
 ---
 
