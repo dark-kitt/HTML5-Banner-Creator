@@ -43,7 +43,7 @@ if ( count( $project_config[1] ) < 2 && count( $project_config[1] ) !== 0 )
 <html lang="de">
 	<head>
 		<meta charset="utf-8" />
-		<title>Banner Creator</title>
+		<title>HTML5 Banner Creator</title>
 		<link rel="shortcut icon" href="assets/favicon.ico">
 		<script src="js/jquery-3.3.1.min.js"></script>
 		<script src="js/jstree.js"></script>
