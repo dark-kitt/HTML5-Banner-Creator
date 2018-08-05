@@ -1,0 +1,4 @@
+"HTML5 Banner Creator" by dark-kitt
+https://github.com/dark-kitt/HTML5-Banner-Creator
+is licensed under a Creative Commons license:
+https://creativecommons.org/licenses/by-sa/3.0/
