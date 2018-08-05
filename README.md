@@ -7,7 +7,7 @@ A web application based on php, which helps to create fast and easily HTML5 Disp
 
 ## Requirements
 
-* [php 7.0](http://php.net/downloads.php)
+* [php > 5.6.37](http://php.net/downloads.php)
 * [node.js](https://nodejs.org/en/)
 * [composer](https://getcomposer.org)
 
