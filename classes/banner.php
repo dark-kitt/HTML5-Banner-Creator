@@ -627,9 +627,7 @@
 
 			$HTML_SCSS_JS_content = helper::set_namespace($banner_config, $store_all_IDs_CLASSes_TAGs, $HTML_content, $scss_content, $js_content_container);
 
-			$JS_content = new GK\JavaScriptPacker(
-				$HTML_SCSS_JS_content[2]
-			);
+			$JS_content = new Tholu\Packer\Packer($HTML_SCSS_JS_content[2], 'Normal', true, false, true);
 
 			ob_start();
 
