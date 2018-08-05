@@ -22,7 +22,7 @@ No suitable VM unfortunately available? [Download my](https://bitbucket.org/made
 * mysql 15.1
 * curl 7.52.1
 
-Was created on macOS 10.13.6 via [VirtualBox 5.2.12](https://virtualbox.org/)
+Created on macOS 10.13.6 via [VirtualBox 5.2.12](https://virtualbox.org/)
 
 ## Features
 
