@@ -240,12 +240,11 @@
 
 					}
 				}
-			}
-
-			$banners_zip->addEmptyDir( '_fallbacks' );
-			foreach ( $fallback_files as $fallback )
-			{
-				$banners_zip->addFile( $fallback, '_fallbacks/' . basename( $fallback ));
+				$banners_zip->addEmptyDir( basename( $script_value, '.php' ) . '/_fallbacks' );
+				foreach ( $fallback_files as $fallback )
+				{
+					$banners_zip->addFile( $fallback, basename( $script_value, '.php' ) . '/_fallbacks/' . basename( $fallback ));
+				}
 			}
 
 			$banners_zip->close();
