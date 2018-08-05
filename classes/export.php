@@ -8,7 +8,6 @@
 	{
 		require __DIR__ . '/helper.php';
 		require __DIR__ . '/banner.php';
-		require __DIR__ . '/javascript-packer.php';
 		require dirname(__DIR__) . '/vendor/autoload.php';
 		require dirname(__DIR__) . '/constants.php';
 

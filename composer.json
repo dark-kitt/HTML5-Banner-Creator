@@ -10,6 +10,7 @@
   "minimum-stability": "stable",
   "require": {
     "leafo/scssphp": "^0.7.4",
-    "vladkens/autoprefixer": "dev-master"
+    "vladkens/autoprefixer": "dev-master",
+    "tholu/php-packer": "^0.2.0"
   }
 }

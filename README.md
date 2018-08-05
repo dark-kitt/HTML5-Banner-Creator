@@ -7,7 +7,7 @@ A web application based on php, which helps to create fast and easily HTML5 Disp
 
 ## Requirements
 
-* [php > 5.6.37](http://php.net/downloads.php)
+* [php > 5.6.3](http://php.net/downloads.php)
 * [node.js](https://nodejs.org/en/)
 * [composer](https://getcomposer.org)
 
@@ -120,7 +120,7 @@ This lightweight library is very useful, when jQuery or any other JavaScript lib
 	gcl(class); -> document.getElementsByClassName(class);
 	gtn(tag); -> document.getElementsByTagName(tag);
 
-Just shorthand.
+Just a reduced version.
 
 	animationInterval(func, interval);
 	animationTimeout(func, delay);
@@ -162,7 +162,7 @@ Usage of all functions is explained in `js/animation-library/_examples`. Open th
 
 ## Integrated projects
 
-* [PHP JavaScript's Packer](http://joliclic.free.fr/php/javascript-packer/en/)
+* [PHP JavaScript's Packer](https://github.com/tholu/php-packer)
 * [Leafo scssphp Compiler](https://github.com/leafo/scssphp)
 * [vladkens autoprefixer](https://github.com/vladkens/autoprefixer-php)
 * [jsTree](https://www.jstree.com)

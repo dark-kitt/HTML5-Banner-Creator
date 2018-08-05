@@ -7,6 +7,10 @@ namespace Composer\Autoload;
 class ComposerStaticInit71b96a4d8d35de8900a5e2c328a42fda
 {
     public static $prefixLengthsPsr4 = array (
+        'T' => 
+        array (
+            'Tholu\\Packer\\' => 13,
+        ),
         'L' => 
         array (
             'Leafo\\ScssPhp\\' => 14,
@@ -14,6 +18,10 @@ class ComposerStaticInit71b96a4d8d35de8900a5e2c328a42fda
     );
 
     public static $prefixDirsPsr4 = array (
+        'Tholu\\Packer\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/tholu/php-packer/src',
+        ),
         'Leafo\\ScssPhp\\' => 
         array (
             0 => __DIR__ . '/..' . '/leafo/scssphp/src',
