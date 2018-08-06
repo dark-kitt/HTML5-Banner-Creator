@@ -1,7 +1,7 @@
 <?php
 // DEFINE YOUR NAMESPACE
 define('NAMESPACE', 'HTML5-BC__');
-// SET NAMESPACE global or for each folder group
+// SET NAMESPACE global or for each banner group
 define('SET_NAMESPACE', 'set.namespace');
 
 // JS ANIMATION LIBRARY files /directory/ => js/animation-library
@@ -29,6 +29,7 @@ define('CLIENT_BASE_STYLES', 'client-base.scss');
 
 
 // HTML FORMAT TEMPLATES /directory/ => banner-templates/
+// NOTE! the order is important
 // Wallpaper right top 728x90/160x600
 define('WP_RIGHT_TOP_728x90_160x600', 'wp-right-top-728x90-160x600.php');
 // Wallpaper right bottom 728x90/160x600

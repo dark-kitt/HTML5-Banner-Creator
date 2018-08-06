@@ -1,17 +1,17 @@
 HTML5 Banner Creator
 ==============
 
-A web application based on php, which helps to create fast and easily HTML5 Display Ads / HTML5 Banner. Set up your project with multiple banner and fill them with markup or place prepared files. Create templates for banner like Wallpapers or Fireplace Ads and view them as one assembly, while designing. Have multiple export options for different advertisers. The HTML5 markup is mainly created by the tool itself. When creating HTML5 in the **`index.php`** file for each banner, just place the contents you need within the **`<body></body>`** tag. Some examples, to show the usage, are available in the tool.
+A web application based on php, which helps to create fast and easily HTML5 Display Ads / HTML5 Banner. Set up your project with multiple banner and fill them with markup or place prepared files. Create templates for banner like Wallpapers or Fireplace Ads and view them as one assembly, while designing. Have multiple export options for different advertisers. The HTML5 markup is mainly created by the tool itself. When creating HTML5 markup in the **`index.php`** file for each banner, just place the contents you need within the **`<body></body>`** tag. Some examples, to show the usage, are available in the tool.
 
 ---
 
 ## Requirements
 
-* [php > 5.6.3](http://php.net/downloads.php)
+* [php 5.6+](http://php.net/downloads.php)
 * [node.js](https://nodejs.org/en/)
 * [composer](https://getcomposer.org)
 
-No suitable VM available? [Download my](https://bitbucket.org/madebykittel/debian_9.5_stretch-vm-for-virtualbox-macos).
+No suitable VM available? [Download my.](https://bitbucket.org/madebykittel/debian_9.5_stretch-vm-for-virtualbox-macos).
 
 ### My VM
 * Debian 9.5.0 amd64 netinst
@@ -90,6 +90,15 @@ Set up your project with the **`project_config.json`** file in the root director
 		],
 		["BASE_JS","CLIENT_BASE_STYLES","CLIENT_INDEX_MARKUP","CLIENT_SCSS_MARKUP","CLIENT_JS_MARKUP","CLIENT_JS_FILE"]
 	]
+
+---
+
+### Hotkey list
+
+* cmd + s or crtl + s // to refresh the banner
+* tab // switch between tree and banners
+* arrow keys (in tree) // open and close folder or navigate to a banner
+* enter (in tree) // open a banner
 
 ---
 

@@ -524,12 +524,12 @@ $(document).ready(function() {
         }
     });
 
-    $(window).on('keypress', function(e) {
+    $(window).on('keypress', function(event) {
 
         setTimeout(function() {
             disableCheck = false;
         }, enableDelay);
-        if ((e.metaKey || e.ctrlKey) && e.keyCode == 83 && disableCheck === false) {
+        if (event.which == 115 && (event.ctrlKey||event.metaKey)|| (event.which == 19)) {
             var $iframe = $('#banner').children('iframe'),
                 path = '/' + $iframe[0].getAttribute('src');
             disableCheck = true;
@@ -564,9 +564,10 @@ $(document).ready(function() {
                     return false;
                 }
             });
-            e.preventDefault();
+            event.preventDefault();
             return false;
         }
+        return true;
     });
 
     $('#callProject').on('click', function(event) {
