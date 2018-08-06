@@ -1,6 +1,3 @@
-js/hyphenator/* linguist-vendored
-js/jquery-3.3.1.min.js linguist-vendored
-js/jquery-ui.min.js linguist-vendored
-js/jstree.js linguist-vendored
+js/* linguist-vendored
 projects/* linguist-vendored
 vendor/* linguist-vendored
