@@ -42,9 +42,9 @@ Created on macOS 10.13.6 via [VirtualBox 5.2.12](https://virtualbox.org/)
 
 ## Set up a project
 
-Set up your project with the **`project_config.php`** file in the root directory. Write three arrays for the project structure and place them in the **`call_project()`** function, like in the example below (the **`$project_config`** variable is required). The first array requires strings, for the main folder structure. Only the second array is "dynamic" to create subdirectories for the banners with different dependencies. Place some constants in the last array to edit the banners globally. This is also possible for each banners group, which is defined in the second array. You'll find for each part of the constants a short description in the **`constants.php`** file in the root directory.
+Set up your project with the **`project_config.json`** file in the root directory. Write three arrays for the project structure, like in the example below. The first array requires strings, for the main folder structure. Only the second array is "dynamic" to create subdirectories for the banners with different dependencies. Place some constants in the last array to edit the banners globally. This is also possible for each banners group, which is defined in the second array. You'll find for each part of the constants a short description in the **`constants.php`** file in the root directory.
 
-	$project_config = banner::call_project(
+	[
 		["client","product","campagne","motif"],
 		[
 			[160,600],
@@ -89,7 +89,7 @@ Set up your project with the **`project_config.php`** file in the root directory
 			]
 		],
 		["BASE_JS","CLIENT_BASE_STYLES","CLIENT_INDEX_MARKUP","CLIENT_SCSS_MARKUP","CLIENT_JS_MARKUP","CLIENT_JS_FILE"]
-	);
+	]
 
 ---
 
