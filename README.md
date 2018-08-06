@@ -1,7 +1,7 @@
 HTML5 Banner Creator
 ==============
 
-A web application based on php, which helps to create fast and easily HTML5 Display Ads / HTML5 Banner. Set up your project with multiple banner and fill them with markup or place prepared files. Create templates for banner like Wallpapers or Fireplace Ads and preview, while you are styling them, as one assembly. Have multiple export options for different advertiser. The HTML5 markup is mainly created by the tool itself. When creating HTML5 in the **`index.php`** file for each banner, just place the contents you need within the **`<body></body>`** tag. Some examples, to show the usage, are available in the tool.
+A web application based on php, which helps to create fast and easily HTML5 Display Ads / HTML5 Banner. Set up your project with multiple banner and fill them with markup or place prepared files. Create templates for banner like Wallpapers or Fireplace Ads and view them as one assembly, while designing. Have multiple export options for different advertiser. The HTML5 markup is mainly created by the tool itself. When creating HTML5 in the **`index.php`** file for each banner, just place the contents you need within the **`<body></body>`** tag. Some examples, to show the usage, are available in the tool.
 
 ---
 
@@ -11,7 +11,7 @@ A web application based on php, which helps to create fast and easily HTML5 Disp
 * [node.js](https://nodejs.org/en/)
 * [composer](https://getcomposer.org)
 
-No suitable VM unfortunately available? [Download my](https://bitbucket.org/madebykittel/debian_9.5_stretch-vm-for-virtualbox-macos).
+No suitable VM available? [Download my](https://bitbucket.org/madebykittel/debian_9.5_stretch-vm-for-virtualbox-macos).
 
 ### My VM
 * Debian 9.5.0 amd64 netinst
@@ -26,11 +26,11 @@ Created on macOS 10.13.6 via [VirtualBox 5.2.12](https://virtualbox.org/)
 
 ## Features
 
-* Set up multiple banner
-* Displays file weight
+* Set up multiple banners
+* Display file weight
 * Place markup in files
 * Place prepared files
-* Compress banner
+* Compress banners
 * Multiple export for different advertiser
 * Less kb JavaScript animation library
 * Style with SCSS
@@ -42,7 +42,7 @@ Created on macOS 10.13.6 via [VirtualBox 5.2.12](https://virtualbox.org/)
 
 ## Set up a project
 
-Set up your project with the **`project_config.json`** file in the root directory. Write three arrays for the project structure, like in the example below. The first array requires strings, for the main folder structure. Only the second array is "dynamic" to create subdirectories for the banners with different dependencies. Place some constants in the last array to edit the banners globally. This is also possible for each banners group, which is defined in the second array. You'll find for each part of the constants a short description in the **`constants.php`** file in the root directory.
+Set up your project with the **`project_config.json`** file in the root directory. Write three arrays for the project structure, like in the example below. The first array requires strings for the main folder structure. Only the second array is "dynamic" to create subdirectories for the banners with different dependencies. Place some constants in the last array to edit the banners globally. This is also possible for each banner group, which is defined in the second array. You'll find for each part of the constants a short description in the **`constants.php`** file in the root directory.
 
 	[
 		["client","product","campagne","motif"],
@@ -112,7 +112,7 @@ Place your prepared files in `/place-files`. Only SCSS and JavaScript files, lik
 
 ## Animation library
 
-This lightweight library is very useful, when jQuery or any other JavaScript library is not available or you don't wanna use them.
+This lightweight library is very useful, when jQuery or any other JavaScript library is not available or you don't want to use them.
 
 ### The library includes:
 
