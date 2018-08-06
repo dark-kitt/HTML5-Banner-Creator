@@ -1,6 +1,6 @@
 $(document).ready(function() {
     var disableCheck = false,
-        enableTime = 1500;
+        enableDelay = 1500;
 
     function getBannerPath(elem) {
         var pathArr = [];
@@ -31,7 +31,7 @@ $(document).ready(function() {
 
         setTimeout(function() {
             disableCheck = false;
-        }, enableTime);
+        }, enableDelay);
         if (disableCheck === false) {
             disableCheck = true;
 
@@ -197,6 +197,16 @@ $(document).ready(function() {
         });
         $('.jstree-leaf').each(function() {
             $(this).children('a').children('i').css('background-image', 'assets/playbutton.svg');
+        });
+    }).on("keydown", ".jstree-anchor", function(e) {
+        if ($(this).parent().hasClass('jstree-open')) {
+            $(this).children('i').css('transform', 'rotate(180deg)');
+        } else {
+            $(this).children('i').css('transform', 'rotate(90deg)');
+        }
+
+        $('.jstree-open').each(function() {
+            $(this).children('a').children('i').css('transform', 'rotate(180deg)');
         });
     });
 
@@ -383,7 +393,7 @@ $(document).ready(function() {
 
         setTimeout(function() {
             disableCheck = false;
-        }, enableTime);
+        }, enableDelay);
         if (disableCheck === false) {
             disableCheck = true;
 
@@ -431,7 +441,7 @@ $(document).ready(function() {
 
         setTimeout(function() {
             disableCheck = false;
-        }, enableTime);
+        }, enableDelay);
         if (disableCheck === false) {
             disableCheck = true;
             if ($(this).data('files') === 'tree') {
@@ -473,7 +483,7 @@ $(document).ready(function() {
 
         setTimeout(function() {
             disableCheck = false;
-        }, enableTime);
+        }, enableDelay);
         if (disableCheck === false) {
             disableCheck = true;
             var $iframe = $(this).siblings('#banner').children('iframe'),
@@ -518,7 +528,7 @@ $(document).ready(function() {
 
         setTimeout(function() {
             disableCheck = false;
-        }, enableTime);
+        }, enableDelay);
         if ((e.metaKey || e.ctrlKey) && e.keyCode == 83 && disableCheck === false) {
             var $iframe = $('#banner').children('iframe'),
                 path = '/' + $iframe[0].getAttribute('src');
@@ -563,7 +573,7 @@ $(document).ready(function() {
 
         setTimeout(function() {
             disableCheck = false;
-        }, enableTime);
+        }, enableDelay);
         var path = '';
 
         if (disableCheck === false) {

@@ -60,6 +60,6 @@
 	transform: rotate(0deg) !important;
 }
 
-.jstree-default .jstree-clicked {
+.jstree-default .jstree-clicked, .jstree-hovered {
   background-color: $light-black;
 }
