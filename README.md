@@ -31,7 +31,7 @@ Created on macOS 10.13.6 via [VirtualBox 5.2.12](https://virtualbox.org/)
 * Place markup in files
 * Place prepared files
 * Compress banners
-* Multiple export for different advertiser
+* Multiple export for different advertisers
 * Less kb JavaScript animation library
 * Style with SCSS
 * CSS Autoprefixer
