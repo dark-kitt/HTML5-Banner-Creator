@@ -7,7 +7,9 @@ require __DIR__ . '/classes/banner.php';
 require __DIR__ . '/classes/export.php';
 
 require __DIR__ . '/constants.php';
-require __DIR__ . '/project_config.php';
+
+$global_config_content = json_decode(file_get_contents(__DIR__ . '/project_config.json'));
+$project_config = banner::call_project($global_config_content[0], $global_config_content[1], $global_config_content[2]);
 
 $app_scss_content = file_get_contents( __DIR__ . '/scss/main.scss' );
 

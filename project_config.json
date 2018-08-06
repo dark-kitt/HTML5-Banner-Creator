@@ -1,6 +1,4 @@
-<?php
-
-$project_config = banner::call_project(
+[
     ["client","product","campagne","motif"],
     [
         [160,600],
@@ -45,4 +43,4 @@ $project_config = banner::call_project(
         ]
     ],
     ["BASE_JS","CLIENT_BASE_STYLES","CLIENT_INDEX_MARKUP","CLIENT_SCSS_MARKUP","CLIENT_JS_MARKUP","CLIENT_JS_FILE"]
-);
+]
