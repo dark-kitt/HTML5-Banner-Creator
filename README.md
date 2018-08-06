@@ -59,11 +59,11 @@ Set up your project with the **`project_config.php`** file in the root directory
 			],
 			[ "floor-ad", [
 					[ "15-sec", [
-							[1200,400]
+							[1200,200]
 						]
 					],
 					[ "30-sec", [
-							[1200,400]
+							[1200,200]
 						]
 					],
 					["DRAW_SVG","CLIENT_SCSS_FILE"]
