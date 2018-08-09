@@ -647,8 +647,6 @@
 
 				print '<script type="text/javascript">' . $JS_content->pack() . '</script>';
 
-				print '<script type="text/javascript">var HTML5_BC_regex = "/(?:BC).*?HTML5[^\>]/"</script>';
-
 				print '</body></html>';
 
 			$banner = helper::compress_HTML( ob_get_contents() );
