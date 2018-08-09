@@ -1,1 +1,14 @@
-{"source":"skjdbaksdb","replace":"","char":"","identifier":"test","directory":"test","language":"de.js","exeptions":["test","test","test",""]}
+{
+    "source": "An old story yet lives of the \"Thorny Road of Honor,\" of a marksman, who indeed attained to rank and office, but only after a lifelong and weary strife against difficulties. Who has not, in reading this story, thought of his own strife, and of his own numerous \"difficulties?\" The story is very closely akin to reality; but still it has its harmonious explanation here on earth, while reality often points beyond the confines of life to the regions of eternity. The history of the world is like a magic lantern that displays to us, in light pictures upon the dark ground of the present, how the benefactors of mankind, the martyrs of genius, wandered along the thorny road of honor.",
+    "replace": "input",
+    "char": "",
+    "identifier": "",
+    "directory": "client\/product\/campagne\/motif",
+    "language": "en-gb.js",
+    "exeptions": [
+        "marksman",
+        "harmonious",
+        "benefactors",
+        "numerous"
+    ]
+}

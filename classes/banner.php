@@ -38,7 +38,8 @@
 
 		if( isset( $_POST['call_project'] ) && !empty( $_POST['call_project'] ) )
 		{
-			require dirname(__DIR__) . '/project_config.php';
+			$global_config_content = json_decode(file_get_contents(__DIR__ . '/project_config.json'));
+			$project_config = banner::call_project($global_config_content[0], $global_config_content[1], $global_config_content[2]);
 			exit;
 		}
 	}

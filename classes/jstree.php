@@ -12,11 +12,11 @@
 		{
 			$directory_items = scandir($directory);
 			$result = [];
-			$ignore = ['.', '..', '.DS_Store', '_project_config.json', 'index.php'];
+			$ignore = ['.', '..', '.DS_Store', '_project_config.json'];
 
 			foreach ($directory_items as $item)
 			{
-				if (in_array($item, $ignore) || in_array('config.php', $directory_items) || in_array('index.php', $directory_items))
+				if (in_array($item, $ignore) || in_array('config.php', $directory_items))
 				{
 					continue;
 				}

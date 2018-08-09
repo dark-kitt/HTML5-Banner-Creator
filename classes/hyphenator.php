@@ -343,25 +343,27 @@
 				$('#delete-saved-value').on('click', function() {
 					if ($('select[name=saved-values]').val() !== '') {
 						var deleteJSON = $('select[name=saved-values]').val();
-						$.ajax({
-							type: 'post',
-							url: 'hyphenator.php',
-							data: {
-								delete_JSON: 'delete_saved_value',
-								file_name: deleteJSON,
-							},
-							success: function() {
-								$('option[value="' + deleteJSON + '"]').remove();
+							if (confirm('Do you really wanna delete ' + deleteJSON + '!')) {
+								$.ajax({
+									type: 'post',
+									url: 'hyphenator.php',
+									data: {
+										delete_JSON: 'delete_saved_value',
+										file_name: deleteJSON,
+									},
+									success: function() {
+										$('option[value="' + deleteJSON + '"]').remove();
 
-								$('textarea[name=source]').val('');
-								$('input[name=replace]').val('');
-								$('input[name=char]').val('');
-								$('input[name=identifier]').val('');
-								$('input[name=directory]').val('');
-								$('select[name=language]').val('');
-								$('textarea[name=exeptions]').val('');
+										$('textarea[name=source]').val('');
+										$('input[name=replace]').val('');
+										$('input[name=char]').val('');
+										$('input[name=identifier]').val('');
+										$('input[name=directory]').val('');
+										$('select[name=language]').val('');
+										$('textarea[name=exeptions]').val('');
+									}
+								});
 							}
-						});
 					}
 				});
 

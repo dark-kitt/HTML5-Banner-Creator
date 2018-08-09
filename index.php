@@ -41,7 +41,7 @@ if ( count( $project_config[1] ) < 2 && count( $project_config[1] ) !== 0 )
 <html lang="de">
 	<head>
 		<meta charset="utf-8" />
-		<title>HTML5 Banner Creator</title>
+		<title>Banner Creator</title>
 		<link rel="shortcut icon" href="assets/favicon.ico">
 		<script src="js/jquery-3.3.1.min.js"></script>
 		<script src="js/jstree.js"></script>
@@ -92,6 +92,7 @@ if ( count( $project_config[1] ) < 2 && count( $project_config[1] ) !== 0 )
 					<div class="collapse-body tree-collapse">
 						<div class="collapse-body-content">
 							<div class="refresh-body-content" data-files="tree"></div>
+							<input id="jstree-search" class="text text-size-small" type="text" name="jstree-search" value="" placeholder="search..">
 							<div id="jstree" class="text text-size-small"></div>
 						</div>
 					</div>

@@ -11,7 +11,7 @@ A web application based on php, which helps to create fast and easily HTML5 Disp
 * [node.js](https://nodejs.org/en/)
 * [composer](https://getcomposer.org)
 
-No suitable VM available? [Download my.](https://bitbucket.org/madebykittel/debian_9.5_stretch-vm-for-virtualbox-macos).
+No suitable VM available? [Download my.](https://bitbucket.org/madebykittel/debian_9.5_stretch-vm-for-virtualbox-macos)
 
 ### My VM
 * Debian 9.5.0 amd64 netinst
@@ -33,6 +33,8 @@ Created on macOS 10.13.6 via [VirtualBox 5.2.12](https://virtualbox.org/)
 * Compress banners
 * Multiple export for different advertisers
 * Less kb JavaScript animation library
+* Tree view with search bar
+* Archive old projects
 * Style with SCSS
 * CSS Autoprefixer
 * CSS Autonamespace
@@ -95,10 +97,10 @@ Set up your project with the **`project_config.json`** file in the root director
 
 ### Hotkey list
 
-* cmd + s or crtl + s // to refresh the banner
-* tab // switch between tree and banners
-* arrow keys (in tree) // open and close folder or navigate to a banner
-* enter (in tree) // open a banner
+* `cmd + s` or `crtl + s` // to refresh the banner
+* `tab` // switch between tree and banners
+* `arrow keys` (in tree) // open and close folder or navigate to a banner
+* `enter` (in tree) // open a banner
 
 ---
 
@@ -116,6 +118,9 @@ Place your markup files in `/markup`. Only HTML, SCSS and JavaScript files, like
 
 ### place files
 Place your prepared files in `/place-files`. Only SCSS and JavaScript files, like the examples. Placeholder: `###width###` `###height###`
+
+### archive old projects
+Archive old projects with the little folder icon in the tree view. You'll find the archived projects in `/banner-archive`.
 
 ---
 

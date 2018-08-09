@@ -64,43 +64,46 @@
 			return round($size, 2) . ' ' . $units[$i];
 		}
 
-		public static function find_all_directories($path)
+		public static function delete_dir($dir)
 		{
-			if ( glob( $path . '/config.php' ) )
-			{
-				return $path;
-			}
-			else
-			{
-				$new_path = glob( $path . '/*');
-				$subdirectory = [];
-
-				foreach ( $new_path as $new_key => $new_value )
-				{
-					$directory_path = self::find_all_directories($new_path[$new_key]);
-					array_push( $subdirectory, $directory_path );
+			$items = scandir($dir);
+			foreach ($items as $item) {
+				if ($item === '.' || $item === '..') {
+					continue;
 				}
-
-				return $subdirectory;
+				$path = $dir.'/'.$item;
+				if (is_dir($path)) {
+					self::delete_dir($path);
+				}
+				else
+				{
+					unlink($path);
+				}
 			}
+			rmdir($dir);
 		}
 
-		public static function get_all_banner_directories($path)
+		public static function find_all_file_paths( $path )
 		{
-			$all_banners = [];
-			$new_arr = [];
+			$directory_items = scandir($path);
+			$result = [];
+			$ignore = ['.', '..', '.DS_Store'];
 
-			foreach ( glob( $path . "*", GLOB_ONLYDIR ) as $all_directories )
-			{
-				$push_directory = helper::find_all_directories( $all_directories );
-				array_push( $all_banners, $push_directory );
+			foreach ($directory_items as $item) {
+				if ( !in_array($item, $ignore) )
+				{
+					if ( is_file($path . '/' . $item) )
+					{
+						$result[] = [ $path . '/' . $item ];
+					}
+					if ( is_dir($path . '/' . $item) )
+					{
+						$result[] = [ self::find_all_file_paths($path . '/' . $item ) ];
+					}
+				}
 			}
-
-			array_walk_recursive($all_banners, function($value, $key) use (&$new_arr) { $new_arr[] = $value; });
-
-			return $new_arr;
+			return array_unique( helper::flatten_array($result));
 		}
-
 
 		public static function find_all_config_paths( $path )
 		{
@@ -163,7 +166,7 @@
 			return $html;
 		}
 
-		public static function set_namespace($banner_config, $all_IDs_CLASSes_TAGs, $HTML_content = null , $SCSS_content = null, $JS_content = null)
+		public static function set_namespace($banner_config, $all_IDs_CLASSes_TAGs, $HTML_content = null , $SCSS_content = null, $JS_content = null, $force_set_namespace = null)
 		{
 			$SCSS_ids = $all_IDs_CLASSes_TAGs[0][0];
 			$SCSS_classes = $all_IDs_CLASSes_TAGs[0][1];
@@ -184,7 +187,7 @@
 			$JS_cl_in_object_KSJS = $all_IDs_CLASSes_TAGs[2][1][5];
 			$JS_gcl_KSJS = $all_IDs_CLASSes_TAGs[2][1][6];
 
-			if ( $banner_config['namespace'] )
+			if ( $banner_config['namespace'] || $force_set_namespace )
 			{
 				if ( count($HTML_ids) > 0 )
 				{

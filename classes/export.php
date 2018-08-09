@@ -237,7 +237,6 @@
 						}
 
 						$banners_zip->addFromString( basename( $script_value, '.php' ) . '/' . $banner_name . '/index.html', preg_replace( '/\r|\n/', '', $result ));
-
 					}
 				}
 				$banners_zip->addEmptyDir( basename( $script_value, '.php' ) . '/_fallbacks' );
@@ -270,6 +269,6 @@
 				exit;
 			*/
 
-			echo '/' . basename( dirname(__FILE__) ) . '/export-cache/banner_package.zip';
+			echo '/classes/export-cache/banner_package.zip';
 		}
 	}
