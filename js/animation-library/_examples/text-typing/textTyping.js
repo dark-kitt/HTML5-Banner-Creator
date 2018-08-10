@@ -10,6 +10,39 @@ var textTyping = function (o) {
 		deleteIn = o.deleteIn || (o.deleteIn === 0 ? 0 : 1000),
 		deleteTo = o.deleteTo || '';
 
+	function checkForBreaks(val) {
+		var breaks = val.match(/<br>|<br\/>/g),
+			before, after, arrBr = [];
+
+		if (val !== '' && val !== null) {
+			for (var i = 0; i <= breaks.length; i++) {
+				if (val.match(/.*?(?=<)/)) {
+					before = val.match(/.*?(?=<)/)[0].split('');
+					for (var j = 0; j < before.length; j++) {
+						arrBr.push(before[j]);
+					}
+					arrBr.push('<br/>');
+				}
+				if (i === breaks.length) {
+					if (val.match(/r>.*|\/>.*/)) {
+						after = val.match(/r>.*|\/>.*/)[0].substring(2).split('');
+					}
+					else {
+						after = val.split('');
+					}
+					for (var k = 0; k < after.length; k++) {
+						arrBr.push(after[k]);
+					}
+				}
+				else {
+					after = val.match(/r>.*|\/>.*/)[0].substring(2);
+					val = after;
+				}
+			}
+		}
+		return arrBr;
+	}
+
 	return animationTimeout(function() {
 
 		var textCon = document.createElement('SPAN');
@@ -74,9 +107,9 @@ var textTyping = function (o) {
 			}, 500);
 		}
 
-		var textArray = text.split(''),
+		var textArray = checkForBreaks(text),
 			loopCounter = -1,
-			deleteArray = deleteTo.split(''),
+			deleteArray = checkForBreaks(deleteTo),
 			deleteCounter = textArray.length;
 
 		var frameLooper = animationInterval(function() {

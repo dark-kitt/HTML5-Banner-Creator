@@ -42,10 +42,12 @@
 				id: 'redBox', set the element(s) by cl: 'class', tn: 'tag' or el: index[i] (required, string/element)
 				delay: 2000, set the delay in milliseconds (optional/defalut 1000,number)
 				fps: 30, frames per second [the loop is build with requestAnimationFrame] (optional/defalut 20, number)
-				steps: 5, steps are the count value (optional/defalut 20, number)
-				start: '#ec2727', start color e.g. hex, rgb, rgba, hsl or hsla (optional/defalut #000, string)
-				end: '#021795', end color e.g. hex, rgb, rgba, hsl or hsla (optional/defalut #FFF, string)
-				style: 'background' the style can be background-color, border-color, color, fill or stroke (required, string)
+				text: 'text', string to add (required, string)
+				cursor: 'true', display cursor (optional/defalut true, boolean)
+				deleteCursorIn: 1000, delete the cursor (optional/defalut 1000,number)
+				deleteIt: true, delete the string to added (optional/defalut false, boolean)
+				deleteIn: 1000, delete the string (optional/defalut 1000,number)
+				deleteTo: 'text', delete the text until (optional/defalut '', string)
 		 * });
 		*/
 
@@ -53,7 +55,7 @@
 			id: 'elemID',
 			delay: 1000,
 			fps: 10,
-			text: 'Place your string here and as much as you like.',
+			text: 'Place your string<br/>here and<br> as much as you like.',
 			cursor: true,
 			deleteCursorIn: 1000,
 			deleteIt: true,
