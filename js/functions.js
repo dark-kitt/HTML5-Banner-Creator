@@ -323,12 +323,50 @@ $(document).ready(function() {
         }, 250);
         $('#jstree-search')
         .focusout(function() {
-            $('.jstree-anchor').css('display', 'block');
-            $('[class*="jstree-"][role="group"]').css('padding-left', '10px');
+            if ($('#jstree-search').val() === '') {
+                $('.jstree-anchor').css('display', 'block');
+                $('[class*="jstree-"][role="group"]').css('padding-left', '10px');
+                $('.jstree-open').each(function() {
+                    $('li').children('a').on('mouseover', function() {
+                        $(this).prev().css( 'opacity', '1' );
+                    });
+                    $('.jstree-ocl').on('mouseover', function(e) {
+                        $(this).css( 'opacity', '1' );
+                        $(this).next().addClass( 'jstree-hovered' );
+                    });
+                    $('li').children('a').on('mouseleave', function() {
+                        $(this).prev().css( 'opacity', '0' );
+                    });
+                    $('.jstree-ocl').on('mouseleave', function(e) {
+                        $(this).prev().css( 'opacity', '0' );
+                        $(this).next().removeClass( 'jstree-hovered' );
+                    });
+                    $(this).children('a').children('i').css('transform', 'rotate(180deg)');
+                });
+            }
         })
         .blur(function() {
-            $('.jstree-anchor').css('display', 'block');
-            $('[class*="jstree-"][role="group"]').css('padding-left', '10px');
+            if ($('#jstree-search').val() === '') {
+                $('.jstree-anchor').css('display', 'block');
+                $('[class*="jstree-"][role="group"]').css('padding-left', '10px');
+                $('.jstree-open').each(function() {
+                    $('li').children('a').on('mouseover', function() {
+                        $(this).prev().css( 'opacity', '1' );
+                    });
+                    $('.jstree-ocl').on('mouseover', function(e) {
+                        $(this).css( 'opacity', '1' );
+                        $(this).next().addClass( 'jstree-hovered' );
+                    });
+                    $('li').children('a').on('mouseleave', function() {
+                        $(this).prev().css( 'opacity', '0' );
+                    });
+                    $('.jstree-ocl').on('mouseleave', function(e) {
+                        $(this).prev().css( 'opacity', '0' );
+                        $(this).next().removeClass( 'jstree-hovered' );
+                    });
+                    $(this).children('a').children('i').css('transform', 'rotate(180deg)');
+                });
+            }
         });
       });
     });
