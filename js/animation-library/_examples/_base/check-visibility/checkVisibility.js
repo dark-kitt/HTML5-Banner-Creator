@@ -2,7 +2,14 @@ document.visibilityState = (function() {
 	return document.visibilityState ||  document.mozVisibilityState || document.webkitVisibilityState;
 })();
 (function() {
-	var checkVisibility = true;
+	var checkVisibility = false;
+	if (document.hasFocus()) {
+		checkVisibility = true;
+	} else {
+		if (!document.hidden) {
+			checkVisibility = true;
+		}
+	}
 
 	function visibility(visibility) {
 		if (visibility === 'visible') {

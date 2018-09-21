@@ -1,23 +1,31 @@
 (function() {
 	/* make sure that all CSS animation, setInterval and setTimeout be paused while the Tab isn't visible */
-	var checkVisibility = true,
+	var checkVisibility = false,
 		allSetTimeouts = [],
 		allAnimationTimeouts = [],
-		timeStamp = ( !window.performance.now ) ? new Date().getTime() : performance.now();
+		timestamp = ( !window.performance.now ) ? new Date().getTime() : performance.now();
+
+	if (document.hasFocus()) {
+		checkVisibility = true;
+	} else {
+		if (!document.hidden) {
+			checkVisibility = true;
+		}
+	}
 
 	window.newSetTimeout = window.setTimeout;
 	window.newSetInterval = window.setInterval;
 
 	window.setTimeout = function(func, delay) {
 
-		var timeoutValues = {};
-			timeoutValues.name = 'setTimeout';
-			timeoutValues.delay = delay;
-			timeoutValues.triggered = ( !window.performance.now ) ? new Date().getTime() : performance.now();
-			timeoutValues.func = func;
-			timeoutValues.id = newSetTimeout(func, delay);
+		var timeoutObj = {};
+			timeoutObj.name = 'setTimeout';
+			timeoutObj.delay = delay;
+			timeoutObj.triggered = ( !window.performance.now ) ? new Date().getTime() : performance.now();
+			timeoutObj.func = func;
+			timeoutObj.id = newSetTimeout(func, delay);
 
-		allSetTimeouts.push(timeoutValues);
+		allSetTimeouts.push(timeoutObj);
 
 		if (checkVisibility === false) {
 			clearAllTimeouts(allSetTimeouts);
@@ -62,7 +70,7 @@
 		}
 
 		var startTime = ( !window.performance.now ) ? new Date().getTime() : performance.now(),
-			requestID = {},
+			request = {},
 			done = false;
 
 		function loop() {
@@ -74,14 +82,14 @@
 				startTime = currentTime - ( difference % interval );
 			}
 
-			requestID.id = requestAnimationFrame(loop);
+			request.id = requestAnimationFrame(loop);
 
 			if (done === true) {
-				window.clearAnimationInterval(requestID.id);
+				window.clearAnimationInterval(request.id);
 			}
 		}
-		requestID.id = requestAnimationFrame(loop);
-		return requestID;
+		request.id = requestAnimationFrame(loop);
+		return request;
 	};
 	/* define custom clearInterval function with the original clearInterval as fallback */
 	window.clearAnimationInterval = function(clear) {
@@ -99,8 +107,8 @@
 		}
 
 		var startTime = ( !window.performance.now ) ? new Date().getTime() : performance.now(),
-			requestID = {},
-			timeoutValues = {};
+			request = {},
+			timeoutObj = {};
 
 		function loop() {
 			var currentTime = ( !window.performance.now ) ? new Date().getTime() : performance.now(),
@@ -108,26 +116,26 @@
 			if ( difference >= delay && checkVisibility === true ) {
 				func.call();
 			} else {
-				requestID.id = requestAnimationFrame(loop);
-				timeoutValues.id = requestID.id;
+				request.id = requestAnimationFrame(loop);
+				timeoutObj.id = request.id;
 			}
 		}
 
-		requestID.id = requestAnimationFrame(loop);
+		request.id = requestAnimationFrame(loop);
 
-		timeoutValues.name = 'animationTimeout';
-		timeoutValues.delay = delay;
-		timeoutValues.triggered = ( !window.performance.now ) ? new Date().getTime() : performance.now();
-		timeoutValues.func = func;
-		timeoutValues.id = requestID.id;
+		timeoutObj.name = 'animationTimeout';
+		timeoutObj.delay = delay;
+		timeoutObj.triggered = ( !window.performance.now ) ? new Date().getTime() : performance.now();
+		timeoutObj.func = func;
+		timeoutObj.id = request.id;
 
-		allAnimationTimeouts.push(timeoutValues);
+		allAnimationTimeouts.push(timeoutObj);
 
 		if (checkVisibility === false) {
 			clearAllTimeouts(allAnimationTimeouts);
 		}
 
-		return requestID;
+		return request;
 	};
 	/* define custom clearTimeout function with the original clearTimeout as fallback */
 	window.clearAnimationTimeout = function(clear) {
@@ -148,10 +156,10 @@
 		}
 	};
 
-	var cleanArray = function (arr, breakTimeStamp) {
+	var cleanArray = function (arr, breaktimestamp) {
 		var length = arr.length, newArr = [];
 		while (length--) {
-			if (arr[length].delay >= (breakTimeStamp - arr[length].triggered)) {
+			if (arr[length].delay >= (breaktimestamp - arr[length].triggered)) {
 				newArr.push(arr[length]);
 			}
 			if (length <= 0) {
@@ -160,13 +168,13 @@
 		}
 	};
 
-	var buildTimeout = function(timeouts, breakTimeStamp) {
+	var buildTimeout = function(timeouts, breaktimestamp) {
 		var length = timeouts.length;
 		while (length--) {
 			if (timeouts[length].name === 'setTimeout') {
-				newSetTimeout(timeouts[length].func, (timeouts[length].delay - (breakTimeStamp - timeouts[length].triggered)));
+				newSetTimeout(timeouts[length].func, (timeouts[length].delay - (breaktimestamp - timeouts[length].triggered)));
 			} else {
-				animationTimeout(timeouts[length].func, (timeouts[length].delay - (breakTimeStamp - timeouts[length].triggered)));
+				animationTimeout(timeouts[length].func, (timeouts[length].delay - (breaktimestamp - timeouts[length].triggered)));
 			}
 		}
 	};
@@ -174,15 +182,20 @@
 	var allAniSelectors = [];
 	document.addEventListener('DOMContentLoaded', function() {
 		for (var i = 0; i < document.styleSheets.length; i++) {
-			if (document.styleSheets[i].cssRules !== null) {
-				if (document.styleSheets[i].cssRules.length > 0) {
-					for (var j = 0; j < document.styleSheets[i].cssRules.length; j++) {
-						if (document.styleSheets[i].cssRules[j].cssText.match(/\banimation(\s+|):/g)) {
-							var selector = document.styleSheets[i].cssRules[j].cssText.match(/(.*?)(\s+|)(\{)/g);
-								allAniSelectors.push(selector[0].replace(/\s+\{/g, ''));
+			try {
+				if (document.styleSheets[i].cssRules !== null) {
+					if (document.styleSheets[i].cssRules.length > 0) {
+						for (var j = 0; j < document.styleSheets[i].cssRules.length; j++) {
+							if (document.styleSheets[i].cssRules[j].cssText.match(/\banimation(\s+|):/g)) {
+								var selector = document.styleSheets[i].cssRules[j].cssText.match(/(.*?)(\s+|)(\{)/g);
+									allAniSelectors.push(selector[0].replace(/\s+\{/g, ''));
+							}
 						}
 					}
 				}
+			}
+			catch(err) {
+				console.warn('The cssRules object is empty (document.styleSheets.cssRules). ' + err + ' ' + document.styleSheets[i].ownerNode.outerHTML);
 			}
 		}
 	}, false);
@@ -208,31 +221,37 @@
 		}
 	};
 
-	var breakTimeStamp = 0;
+	var breaktimestamp = 0;
 	function visibility(visibility) {
 		var newAniArr = [], newTimeArr = [];
 		if (visibility === 'visible') {
-			if (typeof allSetTimeouts !== 'undefined') {
-				newTimeArr = cleanArray(allSetTimeouts, breakTimeStamp);
+			if (allSetTimeouts.length > 0 && breaktimestamp > 0) {
+				newTimeArr = cleanArray(allSetTimeouts, breaktimestamp);
 			}
-			if (typeof allAnimationTimeouts !== 'undefined') {
-				newAniArr = cleanArray(allAnimationTimeouts, breakTimeStamp);
+			if (allAnimationTimeouts.length > 0 && breaktimestamp > 0) {
+				newAniArr = cleanArray(allAnimationTimeouts, breaktimestamp);
 			}
 
-			if (typeof newTimeArr !== 'undefined') {
+			if (newTimeArr.length > 0) {
 				allSetTimeouts = [];
-				buildTimeout(newTimeArr, breakTimeStamp);
+				buildTimeout(newTimeArr, breaktimestamp);
 			}
-			if (typeof newAniArr !== 'undefined') {
+			if (breaktimestamp === 0) {
+				buildTimeout(allSetTimeouts, breaktimestamp);
+			}
+			if (newAniArr.length > 0) {
 				allAnimationTimeouts = [];
-				buildTimeout(newAniArr, breakTimeStamp);
+				buildTimeout(newAniArr, breaktimestamp);
+			}
+			if (breaktimestamp === 0) {
+				buildTimeout(allAnimationTimeouts, breaktimestamp);
 			}
 
 			setAnimationPlayState('running');
 		} else {
 
 			setAnimationPlayState('paused');
-			breakTimeStamp = ( !window.performance.now ) ? new Date().getTime() : performance.now();
+			breaktimestamp = ( !window.performance.now ) ? new Date().getTime() : performance.now();
 
 			if(document.readyState === 'complete') {
 				clearAllTimeouts(allSetTimeouts);
@@ -257,16 +276,16 @@
 				visibility('hidden');
 			}
 		}, false);
-		/* bugfix Chrome for visibilitychange when you change the window/programm */
-		window.addEventListener('focus', function() {
-			checkVisibility = true;
-			visibility('visible');
-		}, false);
-		window.addEventListener('blur', function() {
-			checkVisibility = false;
-			visibility('hidden');
-		}, false);
-		/* bugfix Chrome for visibilitychange when you change the window/programm */
+/* bugfix Chrome | visibilitychange
+window.addEventListener('focus', function() {
+	checkVisibility = true;
+	visibility('visible');
+}, false);
+window.addEventListener('blur', function() {
+	checkVisibility = false;
+	visibility('hidden');
+}, false);
+*/
 	}
 	if (document.visibilityState) {
 		for (evt in vendorprefixes) {

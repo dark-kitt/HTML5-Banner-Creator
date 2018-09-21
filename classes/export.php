@@ -18,7 +18,7 @@
 			foreach ($_POST['checkbox_data'][2] as $banner) {
 				banner::create_banner($banner);
 			}
-			export::create_zip_file( $_POST['checkbox_data'] );
+			export::create_zip_file( $_POST['checkbox_data'], $_POST['project_path'] );
 			exit;
 		}
 
@@ -103,7 +103,7 @@
 
 		}
 
-		public static function create_zip_file($data)
+		public static function create_zip_file($data, $project_path)
 		{
 
 			$head_scripts = $data[0];
@@ -111,6 +111,9 @@
 			$banners = $data[2];
 
 			$script_array = array_unique( array_merge( $head_scripts, $body_scripts ) );
+			if ( count( $script_array ) === 0) {
+				$script_array = [''];
+			}
 
 			if ( file_exists( dirname(__FILE__) . '/export-cache' ) === false )
 			{
@@ -216,7 +219,8 @@
 
 						preg_match( '/.*\/(.*)\/(.*?)$/', $banner_values['directory'], $parent_directory );
 						$banner_files = array_diff( glob( $banner_values['directory'] . "/_output/*" ), ['index.html']);
-						if ( $parent_directory[1] === $banner_values['motif'] )
+
+						if ( $parent_directory[1] === basename($project_path) )
 						{
 							$banner_name = basename( $banner_values['directory'] );
 						}

@@ -14,7 +14,7 @@ var textTyping = function (o) {
 		var breaks = val.match(/<br>|<br\/>/g),
 			before, after, arrBr = [];
 
-		if (val !== '' && val !== null) {
+		if (val !== '' && val !== null && breaks !== null) {
 			for (var i = 0; i <= breaks.length; i++) {
 				if (val.match(/.*?(?=<)/)) {
 					before = val.match(/.*?(?=<)/)[0].split('');
@@ -39,12 +39,15 @@ var textTyping = function (o) {
 					val = after;
 				}
 			}
+			return arrBr;
+		} else {
+			return val;
 		}
-		return arrBr;
 	}
 
 	return animationTimeout(function() {
 
+		target.innerHTML = '';
 		var textCon = document.createElement('SPAN');
 
 		if(o.id || o.el){

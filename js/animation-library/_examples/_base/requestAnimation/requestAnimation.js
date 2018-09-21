@@ -13,10 +13,10 @@ window.performance.now = (function() {
 
 /**
 * Create custom interval function with requestAnimationFrame.
-* When you create your function return always false in the end.
+* While creating your function return always false in the end.
 *
 * If you want to clear the interval in your function return true and
-* call the clearAnimationInterval(interval) before it for older Browsers.
+* call the clearAnimationInterval(interval) before, for older Browsers.
 * e.g.
 * if (animationDone === true) {
 * 	if( !window.cancelAnimationFrame ) {
@@ -32,7 +32,7 @@ window.animationInterval = function(func, interval) {
 	}
 
 	var startTime = ( !window.performance.now ) ? new Date().getTime() : performance.now();
-	var requestID = {},
+	var request = {},
 		done;
 
 	function loop() {
@@ -44,14 +44,14 @@ window.animationInterval = function(func, interval) {
 			startTime = currentTime - ( difference % interval );
 		}
 
-		requestID.value = requestAnimationFrame(loop);
+		request.value = requestAnimationFrame(loop);
 
 		if (done === true) {
-			window.clearAnimationInterval(requestID);
+			window.clearAnimationInterval(request);
 		}
 	}
-	requestID.value = requestAnimationFrame(loop);
-	return requestID;
+	request.value = requestAnimationFrame(loop);
+	return request;
 };
 
 /**
@@ -75,7 +75,7 @@ window.animationTimeout = function(func, delay) {
 		}
 
 	var startTime = ( !window.performance.now ) ? new Date().getTime() : performance.now();
-	var requestID = {};
+	var request = {};
 
 	function loop() {
 		var currentTime = ( !window.performance.now ) ? new Date().getTime() : performance.now();
@@ -83,12 +83,12 @@ window.animationTimeout = function(func, delay) {
 		if ( difference >= delay ) {
 			func.call();
 		} else {
-			requestID.value = requestAnimationFrame(loop);
+			request.value = requestAnimationFrame(loop);
 		}
 	}
 
-	requestID.value = requestAnimationFrame(loop);
-	return requestID;
+	request.value = requestAnimationFrame(loop);
+	return request;
 };
 
 /**

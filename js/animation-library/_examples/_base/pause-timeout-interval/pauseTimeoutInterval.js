@@ -8,17 +8,17 @@ document.visibilityState = (function() {
 
 	var checkVisibility = true,
 		allSetTimeouts = [],
-		timeStamp = new Date().getTime();
+		timestamp = new Date().getTime();
 
 	window.setTimeout = function(func, delay) {
 
-		var timeoutValues = {};
-			timeoutValues.delay = delay;
-			timeoutValues.called = new Date().getTime() - timeStamp;
-			timeoutValues.func = func;
-			timeoutValues.id = newSetTimeout(func, delay);
+		var timeoutObj = {};
+			timeoutObj.delay = delay;
+			timeoutObj.called = new Date().getTime() - timestamp;
+			timeoutObj.func = func;
+			timeoutObj.id = newSetTimeout(func, delay);
 
-		allSetTimeouts.push(timeoutValues);
+		allSetTimeouts.push(timeoutObj);
 
 		if (checkVisibility === false) {
 			clearAllTimeouts(allSetTimeouts);
@@ -65,19 +65,19 @@ document.visibilityState = (function() {
 		}
 	};
 
-	var breakTimeStamp,
+	var breaktimestamp,
 		runtime,
 		done;
 	function visibility(visibility) {
 		if (visibility === 'visible') {
-			runtime = breakTimeStamp - timeStamp;
+			runtime = breaktimestamp - timestamp;
 			done = buildTimeout(allSetTimeouts, runtime);
 
 			if (done) {
-				timeStamp = new Date().getTime();
+				timestamp = new Date().getTime();
 			}
 		} else {
-			breakTimeStamp = new Date().getTime();
+			breaktimestamp = new Date().getTime();
 
 			if(document.readyState === 'complete') {
 				clearAllTimeouts(allSetTimeouts);
