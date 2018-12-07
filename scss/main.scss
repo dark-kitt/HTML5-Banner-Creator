@@ -1,18 +1,18 @@
 
-@import 'mixins.scss';
-@import 'variables.scss';
+@import '/abstracts/variables';
+@import '/abstracts/mixins';
 
-@import 'reset.scss';
-@import 'typography.scss';
+@import '/base/reset';
+@import '/base/typography';
 
-@import 'buttons.scss';
-@import 'collapses.scss';
+@import '/components/buttons';
+@import '/components/collapsibles';
+@import '/components/navigation';
+@import '/components/sidebars';
+@import '/components/treeview';
 
-@import 'navigation.scss';
-@import 'sidebars.scss';
+@import '/layout/positioning';
 
-@import 'home.scss';
-@import 'hyphenator.scss';
-@import 'unusedCSS.scss';
-
-@import 'jstree.scss';
+@import '/pages/home';
+@import '/pages/hyphenator';
+@import '/pages/unusedCSS';

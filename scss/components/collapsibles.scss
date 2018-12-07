@@ -1,0 +1,85 @@
+.collapsible {
+    .collapsible-head {
+        @extend %txt-light;
+
+        position: relative;
+        width: 100%;
+
+        padding: 15px;
+        margin-top: 5px;
+
+        border: 2px solid $black;
+        box-sizing: border-box;
+        cursor: pointer;
+
+        .arrow {
+            position: absolute;
+            top: 13px;
+            right: 15px;
+
+            width: 20px;
+            height: 20px;
+
+            transform: rotate(-90deg);
+            transition: transform 0.2s linear;
+        }
+    }
+
+    .collapsible-body {
+        @extend %txt-light-small;
+
+        position: relative;
+        height: auto;
+        max-height: 0;
+
+        background-color: $black;
+        transition: max-height 0.5s ease-out;
+
+        overflow-y: scroll;
+        padding: 0 5px;
+
+        input {
+            @extend %txt-light-small;
+
+            margin: 5px 0;
+            padding: 10px;
+            width: 100%;
+
+            background-color: $light-black;
+
+            border: 1px solid $white-alpha;
+            box-sizing: border-box;
+
+            &[type="checkbox"] {
+                margin: 8px;
+                width: auto;
+            }
+        }
+
+        li {
+            &:first-of-type {
+                margin-top: 5px;
+            }
+
+            span {
+                @extend %txt-light-xsmall;
+
+                display: block;
+                margin-top: 8px;
+
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+        }
+
+        .refresh {
+            position: absolute;
+
+            top: 12px;
+            right: 12px;
+
+            cursor: pointer;
+        }
+    }
+}

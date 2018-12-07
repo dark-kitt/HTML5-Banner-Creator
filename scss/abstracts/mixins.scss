@@ -1,7 +1,30 @@
-@mixin font-size($sizeValue: 16) {
-	font-size: $sizeValue + px;
-	font-size: (($sizeValue/1.6)/10) + rem;
+@mixin font-size($font_size: 16, $line-heihgt: 16) {
+    font-size: $font_size + px;
+    font-size: (($font_size/1.6)/10) + rem;
+    line-height: $line-heihgt + px;
+    line-height: (($line-heihgt/1.6)/10) + rem;
 }
+
+@mixin media-breakpoint-down($range) {
+    @if map-has-key($breakpoint-list, $range) {
+        @media screen and (max-width: #{map-get($breakpoint-list, $range) - 1}) {
+            @content;
+        }
+    } @else {
+        @warn "Unfortunately, no value could be retrieved from '#{$range}'. " + "Please make sure it is defined in '$range' map.";
+    }
+}
+
+@mixin media-breakpoint-up($range) {
+    @if map-has-key($breakpoint-list, $range) {
+        @media screen and (min-width: #{map-get($breakpoint-list, $range)}) {
+            @content;
+        }
+    } @else {
+        @warn "Unfortunately, no value could be retrieved from '#{$range}'. " + "Please make sure it is defined in '$range' map.";
+    }
+}
+
 
 $webkit: true !default;
 $moz: false !default;
@@ -9,74 +32,68 @@ $ms: false !default;
 $o: false !default;
 
 @mixin prefixed($property, $value) {
-  @if $webkit == true {
-    -webkit-#{$property}: #{$value};
-  }
-
-  @if $moz == true {
-    -moz-#{$property}: #{$value};
-  }
-
-  @if $ms == true {
-    -ms-#{$property}: #{$value};
-  }
-
-  @if $o == true {
-    -o-#{$property}: #{$value};
-  }
-
-  #{$property}: #{$value};
+    @if $webkit == true {
+        -webkit-#{$property}: #{$value};
+    }
+    @if $moz == true {
+        -moz-#{$property}: #{$value};
+    }
+    @if $ms == true {
+        -ms-#{$property}: #{$value};
+    }
+    @if $o == true {
+        -o-#{$property}: #{$value};
+    }
+    #{$property}: #{$value};
 }
 
 @mixin hardwareAccel() {
-	@include prefixed(transform, perspective(1px) translateZ(0));
+    @include prefixed(transform, perspective(1px) translateZ(0));
 }
 
 @mixin improveAntiAlias() {
-	box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0);
 }
 
 @mixin forceBlockLevel() {
-	display: inline-block;
-	vertical-align: middle;
+    display: inline-block;
+    vertical-align: middle;
 }
 
 @mixin hacks() {
-	@include forceBlockLevel();
-	@include hardwareAccel();
-	@include improveAntiAlias();
+    @include forceBlockLevel();
+    @include hardwareAccel();
+    @include improveAntiAlias();
 }
 
 @mixin bounce-to-top($font-color, $background) {
-	@include hacks();
+    @include hacks();
+    @include prefixed(transition-property, color);
+    @include prefixed(transition-duration, 0.5s);
 
-	@include prefixed(transition-property, color);
-	@include prefixed(transition-duration, 0.5s);
+    &:before {
+        @include prefixed(transform, scaleY(0));
+        @include prefixed(transform-origin, 50% 100%);
+        @include prefixed(transition-property, transform);
+        @include prefixed(transition-duration, 0.5s);
+        @include prefixed(transition-timing-function, ease-out);
 
-	&:before {
-		content: "";
-		position: absolute;
-		z-index: -1;
-		top: 0;
-		left: 0;
-		right: 0;
-		bottom: 0;
-		background: $background;
-		@include prefixed(transform, scaleY(0));
-		@include prefixed(transform-origin, 50% 100%);
-		@include prefixed(transition-property, transform);
-		@include prefixed(transition-duration, 0.5s);
-		@include prefixed(transition-timing-function, ease-out);
-	}
+        content: "";
+        position: absolute;
+        z-index: -1;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: $background;
+    }
 
-	&:hover,
-	&:focus,
-	&:active {
-		color: $font-color;
+    &:hover {
+        color: $font-color;
 
-		&:before {
-			@include prefixed(transform, scaleY(1));
-			@include prefixed(transition-timing-function, cubic-bezier(.52,1.64,.37,.66));
-		}
-	}
+        &:before {
+            @include prefixed(transform, scaleY(1));
+            @include prefixed(transition-timing-function, cubic-bezier(.52,1.64,.37,.66));
+        }
+    }
 }

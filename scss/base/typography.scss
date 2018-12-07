@@ -1,29 +1,53 @@
-.text {
-	color: $white;
-	font-weight: 300;
-	line-height: 1;
-	font-family: 'Mukta', Arial, sans-serif;
-
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
+%txt {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
-.text-dark {
-	color: $light-black;
+%txt-white { color: $white; }
+%txt-light-black { color: $light-black; }
+%txt-black { color: $black; }
+
+%txt-w-light { font-weight: 300; }
+%txt-w-regular { font-weight: 400; }
+%txt-w-medium { font-weight: 500; }
+%txt-w-semi { font-weight: 600; }
+%txt-w-bold { font-weight: 700; }
+%txt-w-xbold { font-weight: 800; }
+
+%txt-size-normal { @include font-size(16, 16); }
+%txt-size-small { @include font-size(14, 14); }
+%txt-size-xsmall { @include font-size(12, 12); }
+
+%txt-dark,
+%txt-dark-small,
+%txt-dark-xsmall,
+%txt-light,
+%txt-light-small,
+%txt-light-xsmall  {
+    @extend %txt;
+    @extend %txt-w-medium;
+
+    font-family: $font-family;
 }
 
-.text-regular {
-	font-weight: 500;
+%txt-dark, %txt-light {
+    @extend %txt-size-normal;
+}
+%txt-dark-small, %txt-light-small {
+    @extend %txt-size-small;
+}
+%txt-dark-xsmall, %txt-light-xsmall {
+    @extend %txt-size-xsmall;
 }
 
-.text-size-normal {
-	@include font-size(16);
+%txt-dark,
+%txt-dark-small,
+%txt-dark-xsmall {
+    @extend %txt-light-black;
 }
 
-.text-size-small {
-	@include font-size(14);
-}
-
-.text-size-extra-small {
-	@include font-size(12);
+%txt-light,
+%txt-light-small,
+%txt-light-xsmall {
+    @extend %txt-white;
 }

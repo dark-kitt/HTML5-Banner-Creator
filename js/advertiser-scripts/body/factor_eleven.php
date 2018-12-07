@@ -10,7 +10,7 @@
 		}
 		return '';
 	}
-	var clickArea = document.getElementById('click-layer');
+	var clickArea = document.getElementById('clickLayer');
 	clickArea.onclick = function() {
 		window.open(getParameter('clickTag', '_blank'));
 		return false;

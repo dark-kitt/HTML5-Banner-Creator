@@ -1,5 +1,5 @@
 <script type="text/javascript">
-    document.getElementById("click-layer").onclick = function() {
+    document.getElementById("clickLayer").onclick = function() {
         ExitApi.exit();
     };
 </script>

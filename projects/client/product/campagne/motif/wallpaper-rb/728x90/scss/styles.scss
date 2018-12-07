@@ -1,0 +1,88 @@
+@import "/client-scss-file";
+
+@import "/client-base.scss";
+
+#stage {
+    position: relative;
+    width: 728px;
+    height: 90px;
+    background-color: #CCC;
+    overflow: hidden;
+    border-top: 1px solid #CCC;
+    border-left: 1px solid #CCC;
+    border-bottom: 1px solid #CCC;
+    box-sizing: border-box;
+}
+
+#sequence-one,
+#sequence-two {
+    position: absolute;
+    width: 728px;
+    height: 90px;
+    cursor: pointer;
+}
+
+#sequence-one {
+    z-index: 0;
+    background-color: #27b247;
+}
+
+#sequence-two {
+    opacity: 0;
+    z-index: 1;
+    background-color: #2749b2;
+}
+
+.wrapper {
+    position: absolute;
+    top: 50%;
+
+    width: 100%;
+    transform: translateY(-50%);
+}
+
+%font {
+    text-align: center;
+    color: #FFF;
+    font-family: Arial, Helvetica;
+}
+
+.txt {
+    position: relative;
+
+    margin-bottom: 5px;
+    width: 100%;
+
+    @extend %font;
+}
+
+#cta {
+    display: inherit;
+    position: relative;
+    margin: 0 auto;
+
+    width: 100px;
+    height: 30px;
+
+    border: 1px solid #FFF;
+    border-radius: 3px;
+
+    background-color: #ff4c58;
+    cursor: pointer;
+
+    @extend %font;
+}
+
+.cta-ani {
+    animation: pulse 0.4s 2 linear forwards;
+}
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.4); }
+    100% { transform: scale(1); }
+}
+
+
+.unused_css {
+    position: absolute;
+}

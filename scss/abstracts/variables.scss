@@ -1,4 +1,11 @@
-
-$black: #1b1b1d;
+/* colors */
+$black: #1B1B1D;
 $light-black: #222325;
 $white: #FFF;
+
+$opacity: 0.5;
+$white-alpha: rgba($white, $opacity);
+$light-black-alpha: rgba($light-black, $opacity);
+$black-alpha: rgba($black, $opacity);
+
+$font-family: 'Mukta', sans-serif, Arial;

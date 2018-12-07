@@ -1,0 +1,30 @@
+nav {
+    position: absolute;
+    top: 10px;
+    width: 100%;
+
+    ul li {
+        @extend %txt-dark;
+        white-space: nowrap;
+
+        a {
+            @extend %txt-light-black;
+        }
+    }
+}
+
+.nav-left {
+    left: 108%;
+    ul li {
+        float: left;
+        margin-right: 10px;
+    }
+}
+
+.nav-right {
+    right: 108%;
+    ul li {
+        float: right;
+        margin-left: 10px;
+    }
+}

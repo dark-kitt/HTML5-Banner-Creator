@@ -12,7 +12,7 @@
 		}
 		return query_string;
 	}();
-	document.getElementById("click-layer").onclick = function() {
+	document.getElementById("clickLayer").onclick = function() {
 		window.open(getUriParams.clicktag,"_blank")
 	};
 </script>

@@ -1,0 +1,15 @@
+%pos-center, .pos-center {
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+%pos-center-X, .pos-center-X {
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+%pos-center-Y, .pos-center-Y {
+    top: 50%;
+    transform: translateY(-50%);
+}

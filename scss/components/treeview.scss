@@ -1,0 +1,71 @@
+[class*="jstree-"] {
+
+    display: block;
+    cursor: pointer;
+
+    color: $white;
+
+    a {
+        padding: 8px;
+    }
+    li {
+        position: relative;
+        margin-left: 5px;
+    }
+}
+
+#jstree {
+    padding-bottom: 5px;
+
+    .jstree-icon {
+        display: inline-block;
+        position: relative;
+        top: 3px;
+
+        width: 15px;
+        height: 15px;
+
+        margin-right: 8px;
+        background-repeat: no-repeat;
+
+        transform: rotate(0deg);
+        transition: transform 0.2s linear;
+    }
+
+    [aria-expanded="true"] {
+
+        &> a {
+            border-bottom: 1px solid $white-alpha;
+
+            .jstree-icon {
+                transform: rotate(90deg);
+            }
+        }
+    }
+
+    .jstree-ocl {
+        position: absolute;
+        top: 8px;
+        right: 0;
+
+        width: 20px;
+        height: 20px;
+
+        opacity: 0;
+
+        background-image: url("app-assets/img/archive-folder.svg")!important;
+        transition: opacity 0.3s linear;
+
+        &:hover {
+            opacity: 1!important;
+        }
+    }
+
+    .jstree-clicked, .jstree-hovered {
+        background-color: $light-black;
+    }
+
+    .jstree-leaf a i {
+        background-image: url("app-assets/img/playbutton.svg")!important;
+    }
+}

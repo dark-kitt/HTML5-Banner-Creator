@@ -1,0 +1,2 @@
+php_value include_path "./app-classes/:./../app-classes/:./../../app-classes/:./../../../app-classes/"
+php_value auto_prepend_file "app-functions.php"

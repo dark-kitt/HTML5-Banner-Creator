@@ -1,0 +1,27 @@
+{
+    "banner_config": {
+        "banner_dir": "\/projects\/client\/product\/campagne\/motif\/namespace-banner\/200x600",
+        "project_dir": "\/projects\/client\/product\/campagne\/motif",
+        "width": 200,
+        "height": 600,
+        "namespace": true,
+        "template": null,
+        "js_animations": [
+            "\/draw-svg-animation.js",
+            "\/_base-animation.js",
+            "\/fade-animation.js"
+        ],
+        "base_scss": [
+            "\/client-base.scss"
+        ],
+        "global_markups": [
+            "\/client-index-markup.html",
+            "\/client-scss-markup.scss",
+            "\/client-js-markup.js"
+        ],
+        "global_files": [
+            "\/client-js-file.js",
+            "\/client-scss-file.scss"
+        ]
+    }
+}

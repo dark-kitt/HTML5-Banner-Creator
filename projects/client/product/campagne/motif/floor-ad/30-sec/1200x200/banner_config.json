@@ -1,0 +1,26 @@
+{
+    "banner_config": {
+        "banner_dir": "\/projects\/client\/product\/campagne\/motif\/floor-ad\/30-sec\/1200x200",
+        "project_dir": "\/projects\/client\/product\/campagne\/motif",
+        "width": 1200,
+        "height": 200,
+        "namespace": false,
+        "template": null,
+        "js_animations": [
+            "\/_base-animation.js",
+            "\/fade-animation.js"
+        ],
+        "base_scss": [
+            "\/client-base.scss"
+        ],
+        "global_markups": [
+            "\/client-index-markup.html",
+            "\/client-scss-markup.scss",
+            "\/client-js-markup.js"
+        ],
+        "global_files": [
+            "\/client-js-file.js",
+            "\/client-scss-file.scss"
+        ]
+    }
+}

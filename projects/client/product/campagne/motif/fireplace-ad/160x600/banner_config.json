@@ -1,0 +1,26 @@
+{
+    "banner_config": {
+        "banner_dir": "\/projects\/client\/product\/campagne\/motif\/fireplace-ad\/160x600",
+        "project_dir": "\/projects\/client\/product\/campagne\/motif",
+        "width": 160,
+        "height": 600,
+        "namespace": true,
+        "template": "\/fad-160x600-728x90-160x600-template.json",
+        "js_animations": [
+            "\/_base-animation.js",
+            "\/fade-animation.js"
+        ],
+        "base_scss": [
+            "\/client-base.scss"
+        ],
+        "global_markups": [
+            "\/client-index-markup.html",
+            "\/client-scss-markup.scss",
+            "\/client-js-markup.js"
+        ],
+        "global_files": [
+            "\/client-js-file.js",
+            "\/client-scss-file.scss"
+        ]
+    }
+}

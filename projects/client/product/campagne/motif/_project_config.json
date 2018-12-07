@@ -1,58 +1,54 @@
-[
-    ["client","product","campagne","motif"],
-    [
+{
+    "project_dir": ["client","product","campagne","motif"],
+    "banner_formats": [
+        [120,600],
         [160,600],
+        [200,600],
+        [300,600],
+        [300,250],
         [300,250],
         [728,90],
-        [
-            "fireplace-ad",
-            [
+        {
+            "fireplace-ad": [
                 [160,600],
                 [728,90],
                 [160,600],
-                ["FAD_160x600_728x90_160x600","SET_NAMESPACE"]
+                ["FAD_160x600_728x90_160x600","NAMESPACE"]
             ]
-        ],
-        [
-            "floor-ad",
-            [
-                [
-                    "15-sec",
-                    [
+        },
+        {
+            "floor-ad": [
+                {
+                    "15-sec": [
                         [1200,200]
                     ]
-                ],
-                [
-                    "30-sec",
-                    [
+                },
+                {
+                    "30-sec": [
                         [1200,200]
                     ]
-                ],
-                ["DRAW_SVG","CLIENT_SCSS_FILE"]
+                },
+                ["TEXT_TYPING"]
             ]
-        ],
-        ["wallpaper",[
-                [
-                    "right-top",
-                    [
-                        [728,90],
-                        [160,600],
-                        ["WP_RIGHT_TOP_728x90_160x600"]
-                    ]
-                ]
-            ]
-        ],
-        [
-            "banner-namespace",
-            [
-                [728,90],
+        },
+        {
+            "namespace-banner": [
+                [120,600],
                 [160,600],
                 [200,600],
                 [300,600],
-                [120,600]
-            ],
-            ["DRAW_SVG","CLIENT_SCSS_FILE","SET_NAMESPACE"]
-        ]
+                [300,250],
+                [728,90],
+                ["DRAW_SVG","NAMESPACE"]
+            ]
+        },
+        {
+            "wallpaper-rb": [
+                [160,600],
+                [728,90],
+                ["WP_RIGHT_BOTTOM_728x90_160x600"]
+            ]
+        }
     ],
-    ["BASE_JS","CLIENT_BASE_STYLES","CLIENT_INDEX_MARKUP","CLIENT_SCSS_MARKUP","CLIENT_JS_MARKUP","CLIENT_JS_FILE"]
-]
+    "global_files": ["BASE_JS","FADE_JS","CLIENT_BASE_STYLES","CLIENT_INDEX_MARKUP","CLIENT_SCSS_MARKUP","CLIENT_JS_MARKUP","CLIENT_JS_FILE","CLIENT_SCSS_FILE"]
+}

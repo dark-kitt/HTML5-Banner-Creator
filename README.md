@@ -1,7 +1,7 @@
 HTML5 Banner Creator
 ==============
 
-A web application based on php, which helps to create fast and easily HTML5 Display Ads / HTML5 Banner. Set up your project with multiple banner and fill them with markup or place prepared files. Create templates for banner like Wallpapers or Fireplace Ads and view them as one assembly, while designing. Have multiple export options for different advertisers. The HTML5 markup is mainly created by the tool itself. When creating HTML5 markup in the **`index.php`** file for each banner, just place the contents you need within the **`<body></body>`** tag. Some examples, to show the usage, are available in the tool.
+A small web application based on php (easy to modify), which helps to create fast and dynamic HTML5 Display Ads / HTML5 Banner. Set up your project with multiple banner and fill them with markup or place prepared files. Create templates for banner like Wallpapers or Fireplace Ads and view them as one assembly, while designing. Have multiple export options for different advertisers. The HTML5 markup is mainly created by the tool itself. When creating HTML5 markup in the **`index.php`** file for each banner, just place the contents you need within the **`<body></body>`** tag and style them as usual. Some examples, to show the usage, are available in the tool.
 
 ---
 
@@ -39,88 +39,99 @@ Created on macOS 10.13.6 via [VirtualBox 5.2.12](https://virtualbox.org/)
 * CSS Autoprefixer
 * CSS Autonamespace
 * Hyphenate content
+* Set dynamic or static placeholder
 
 ---
 
 ## Set up a project
 
-Set up your project with the **`project_config.json`** file in the root directory. Write three arrays for the project structure, like in the example below. The first array requires strings for the main folder structure. Only the second array is "dynamic" to create subdirectories for the banners with different dependencies. Place some constants in the last array to edit the banners globally. This is also possible for each banner group, which is defined in the second array. You'll find for each part of the constants a short description in the **`constants.php`** file in the root directory.
+Set up your project with the **`project_config.json`** file in the root directory. Only the second array is "dynamic" to create subdirectories for banner with different dependencies. Place some constants in the last array to edit the banners globally or place them in each banner group. You'll find for each part of the constants a short description in the **`/app-assets/constants.php`** file.
 
-	[
-		["client","product","campagne","motif"],
-		[
-			[160,600],
-			[300,250],
-			[728,90],
-			[ "fireplace-ad", [
-					[160,600],
-					[728,90],
-					[160,600],
-					["FAD_160x600_728x90_160x600","SET_NAMESPACE"]
-				]
-			],
-			[ "floor-ad", [
-					[ "15-sec", [
-							[1200,200]
-						]
-					],
-					[ "30-sec", [
-							[1200,200]
-						]
-					],
-					["DRAW_SVG","CLIENT_SCSS_FILE"]
-				]
-			],
-			[ "wallpaper", [
-					[ "right-top", [
-							[728,90],
-							[160,600],
-							["WP_RIGHT_TOP_728x90_160x600"]
-						]
-					]
-				]
-			],
-			[ "banner-namespace", [
-					[728,90],
-					[160,600],
-					[200,600],
-					[300,600],
-					[120,600]
-				],
-				["DRAW_SVG","CLIENT_SCSS_FILE","SET_NAMESPACE"]
-			]
-		],
-		["BASE_JS","CLIENT_BASE_STYLES","CLIENT_INDEX_MARKUP","CLIENT_SCSS_MARKUP","CLIENT_JS_MARKUP","CLIENT_JS_FILE"]
-	]
+    {
+        "project_dir": ["client","product","campagne","motif"],
+        "banner_formats": [
+            [120,600],
+            [160,600],
+            [200,600],
+            [300,600],
+            [300,250],
+            [300,250],
+            [728,90],
+            {
+                "fireplace-ad": [
+                    [160,600],
+                    [728,90],
+                    [160,600],
+                    ["FAD_160x600_728x90_160x600","NAMESPACE"]
+                ]
+            },
+            {
+                "floor-ad": [
+                    {
+                        "15-sec": [
+                            [1200,200]
+                        ]
+                    },
+                    {
+                        "30-sec": [
+                            [1200,200]
+                        ]
+                    },
+                    ["TEXT_TYPING"]
+                ]
+            },
+            {
+                "namespace-banner": [
+                    [120,600],
+                    [160,600],
+                    [200,600],
+                    [300,600],
+                    [300,250],
+                    [728,90],
+                    ["DRAW_SVG","NAMESPACE"]
+                ]
+            },
+            {
+                "wallpaper-rb": [
+                    [160,600],
+                    [728,90],
+                    ["WP_RIGHT_BOTTOM_728x90_160x600"]
+                ]
+            }
+        ],
+        "global_files": ["BASE_JS","FADE_JS","CLIENT_BASE_STYLES","CLIENT_INDEX_MARKUP","CLIENT_SCSS_MARKUP","CLIENT_JS_MARKUP","CLIENT_JS_FILE","CLIENT_SCSS_FILE"]
+    }
+
 
 ---
 
-### Hotkey list
+### hotkeys
 
-* `cmd + s` or `crtl + s` // to refresh the banner
-* `tab` // switch between tree and banners
-* `arrow keys` (in tree) // open and close folder or navigate to a banner
-* `enter` (in tree) // open a banner
+* `crtl + s` // refresh banner
+* `arrow keys`, `enter` // in tree
 
 ---
+
+### create templates
+Take a look into the `/banner-templates/` files. JSON files are required. NOTE: the key is important to match the right folder.
 
 ### unusedCSS
-Matched only `getElementById`, `$(#id)`, `id: id`, `gid(id)`, `getElementsByClassName`, `addClass`, `hasClass`, `removeClass`, `$(.class)`, `class: class`, `cl: class` and `gcl(class)` in the JavaScript files and the function doesn't compare HTML tags in the SCSS or JavaScript files (otherwise you get multiple unused HTML tags).
+Matched only `getElementById`, `$(#id)`, `id: id`, `gid(id)`, `getElementsByClassName`, `addClass`, `hasClass`, `removeClass`, `$(.class)`, `class: class`, `cl: class` and `gcl(class)` in the JavaScript files and the function doesn't search HTML tags in the SCSS or JavaScript files (otherwise you'll get multiple unused HTML tags).
 
 ### export
-Place the required advertiser scripts in `/js/advertiser-scripts`. Only PHP files, like the examples. Placeholder: `###width###` `###height###`
+Place the required advertiser scripts in `/js/advertiser-scripts/`. PHP files are required. Placeholder: `###banner_width###` `##banner_height###` or define your own in `/app-assets/placeholder.php`
 
-### namespace
-The namespace is editable in the `/constants.php` file. All constants are placeable for each banner group or globally for all banner in the last array.
+### namespaceCSS
+The namespace is editable in the `/app-assets/constants.php` file. All constants are placeable for each banner group or globally for all banner in the last array.
 
-### markup
-Place your markup files in `/markup`. Only HTML, SCSS and JavaScript files, like the examples. Placeholder: `###width###` `###height###`
+### create markup
+Place your markup files in `/global-markups/` and link them to your projects with constants in the `/app-assets/constants.php` file. Only HTML, SCSS and JavaScript files, like examples. Placeholder: `###banner_width###` `##banner_height###` or define your own in `/app-assets/placeholder.php`
 
 ### place files
-Place your prepared files in `/place-files`. Only SCSS and JavaScript files, like the examples. Placeholder: `###width###` `###height###`
+Place your prepared files in `/global-files/` and link them to your projects with constants in the `/app-assets/constants.php` file. Only SCSS and JavaScript files, like examples. Placeholder: `###banner_width###` `##banner_height###` or define your own in `/app-assets/placeholder.php`.
 
 ### archive old projects
-Archive old projects with the little folder icon in the tree view. You'll find the archived projects in `/banner-archive`.
+Archive old projects in the tree view. You'll find the archived projects in `/banner-archive/`.
 
 ---
 
@@ -134,7 +145,7 @@ This lightweight library is very useful, when jQuery or any other JavaScript lib
 	gcl(class); -> document.getElementsByClassName(class);
 	gtn(tag); -> document.getElementsByTagName(tag);
 
-Just a reduced version.
+Just shorthand.
 
 	animationInterval(func, interval);
 	animationTimeout(func, delay);
@@ -144,7 +155,7 @@ Just a reduced version.
 
 Created with requestAnimationFrame. If requestAnimationFrame is not supported, the function returns an expended setInterval / setTimeout.
 
-	isMobile(); // returns true
+	isMobile(); // returns bool
 
 Mobile browser detection.
 
@@ -155,7 +166,7 @@ Mobile browser detection.
 	hasClass(elem, class);
 	removeClass(elem, class);
 
-Must have when jQuery is not available.
+When jQuery is not available.
 
 	fade();
 	alongPath();
@@ -164,7 +175,7 @@ Must have when jQuery is not available.
 	drawPath();
 	textTyping();
 
-Usage of all functions is explained in `js/animation-library/_examples`. The requirements for each function are explained in the html file.
+Usage of all functions is explained in `/js/animation-library/` the files.
 
 ---
 
