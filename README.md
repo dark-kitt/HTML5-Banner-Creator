@@ -45,7 +45,7 @@ Created on macOS 10.13.6 via [VirtualBox 5.2.12](https://virtualbox.org/)
 
 ## Set up a project
 
-Set up your project with the **`project_config.json`** file in the root directory. Only the second array is "dynamic" to create subdirectories for banner with different dependencies. Place some constants in the last array to edit the banners globally or place them in each banner group. You'll find for each part of the constants a short description in the **`/app-assets/constants.php`** file.
+Set up your project with the **`project_config.json`** file in the root directory. Only the second array is "dynamic" to create subdirectories for banner with different dependencies. Place some constants in the last array to edit the banners globally or place them in each banner group. You'll find for each part of the constants a short description in the **`/app-assets/constants.php`** file. NOTE: After you created the project globally you will work with the **`project_config.json`** in each project.
 
     {
         "project_dir": ["client","product","campagne","motif"],
