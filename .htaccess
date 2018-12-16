@@ -1,2 +1,12 @@
-php_value include_path "./app-classes/:./../app-classes/:./../../app-classes/:./../../../app-classes/"
-php_value auto_prepend_file "app-functions.php"
+php_value include_path "./app/:./../app/:./../../app/:./../../../app/"
+php_value auto_prepend_file "functions.php"
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase /
+
+    RewriteRule ^$ /app/index.php [L]
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^(.*)$ /app/$1 [L]
+</IfModule>

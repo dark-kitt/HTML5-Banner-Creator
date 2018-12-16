@@ -48,6 +48,13 @@
                 [728,90],
                 ["WP_RIGHT_BOTTOM_728x90_160x600"]
             ]
+        },
+        {
+            "wallpaper-rt": [
+                [160,600],
+                [728,90],
+                ["WP_RIGHT_TOP_728x90_160x600"]
+            ]
         }
     ],
     "global_files": ["BASE_JS","FADE_JS","CLIENT_BASE_STYLES","CLIENT_INDEX_MARKUP","CLIENT_SCSS_MARKUP","CLIENT_JS_MARKUP","CLIENT_JS_FILE","CLIENT_SCSS_FILE"]

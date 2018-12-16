@@ -1,4 +1,4 @@
 {
-    "728x90": "top: 0; float: left;",
+    "728x90": "top: 0; display: block;",
     "160x600": "float: right;"
 }

@@ -1,0 +1,153 @@
+[
+    {
+        "name": "leafo/scssphp",
+        "version": "v0.7.7",
+        "version_normalized": "0.7.7.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/leafo/scssphp.git",
+            "reference": "1d656f8c02a3a69404bba6b28ec4e06edddf0f49"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/leafo/scssphp/zipball/1d656f8c02a3a69404bba6b28ec4e06edddf0f49",
+            "reference": "1d656f8c02a3a69404bba6b28ec4e06edddf0f49",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.4.0"
+        },
+        "require-dev": {
+            "phpunit/phpunit": "~4.6",
+            "squizlabs/php_codesniffer": "~2.5"
+        },
+        "time": "2018-07-22T01:22:08+00:00",
+        "bin": [
+            "bin/pscss"
+        ],
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Leafo\\ScssPhp\\": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Leaf Corcoran",
+                "email": "leafot@gmail.com",
+                "homepage": "http://leafo.net"
+            }
+        ],
+        "description": "scssphp is a compiler for SCSS written in PHP.",
+        "homepage": "http://leafo.github.io/scssphp/",
+        "keywords": [
+            "css",
+            "less",
+            "sass",
+            "scss",
+            "stylesheet"
+        ]
+    },
+    {
+        "name": "tholu/php-packer",
+        "version": "0.2.0",
+        "version_normalized": "0.2.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/tholu/php-packer.git",
+            "reference": "b6f63a6e1112a27db048353fbab50539a4a75764"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/tholu/php-packer/zipball/b6f63a6e1112a27db048353fbab50539a4a75764",
+            "reference": "b6f63a6e1112a27db048353fbab50539a4a75764",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3.0"
+        },
+        "time": "2016-04-19T10:33:55+00:00",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Tholu\\Packer\\": "src"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Thomas Lutz",
+                "email": "thomaslutz.de@gmail.com"
+            },
+            {
+                "name": "Dean Edwards"
+            },
+            {
+                "name": "Nicolas Martin"
+            }
+        ],
+        "description": "A PHP version of Packer, JavaScript obfuscation library originally created by Dean Edwards",
+        "homepage": "https://github.com/tholu/php-packer",
+        "keywords": [
+            "JS",
+            "javascript",
+            "minification",
+            "minify",
+            "obfuscate",
+            "uglify"
+        ]
+    },
+    {
+        "name": "vladkens/autoprefixer",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/vladkens/autoprefixer-php.git",
+            "reference": "72409e120f2336d0f230627ebf3c8d5f0b99df8b"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/vladkens/autoprefixer-php/zipball/72409e120f2336d0f230627ebf3c8d5f0b99df8b",
+            "reference": "72409e120f2336d0f230627ebf3c8d5f0b99df8b",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3.0"
+        },
+        "time": "2015-06-14T13:40:00+00:00",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-0": {
+                "": "lib"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Vlad Pronsky",
+                "email": "vladkens@yandex.ru"
+            }
+        ],
+        "description": "Run Autoprefixer using node.js in you php.",
+        "keywords": [
+            "Node.js",
+            "autoprefixer",
+            "css",
+            "prefixes"
+        ]
+    }
+]

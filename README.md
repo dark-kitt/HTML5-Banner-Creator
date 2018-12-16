@@ -1,15 +1,15 @@
 HTML5 Banner Creator
 ==============
 
-A small web application based on php (easy to modify), which helps to create fast and dynamic HTML5 Display Ads / HTML5 Banner. Set up your project with multiple banner and fill them with markup or place prepared files. Create templates for banner like Wallpapers or Fireplace Ads and view them as one assembly, while designing. Have multiple export options for different advertisers. The HTML5 markup is mainly created by the tool itself. When creating HTML5 markup in the **`index.php`** file for each banner, just place the contents you need within the **`<body></body>`** tag and style them as usual. Some examples, to show the usage, are available in the tool.
+A small web application based on php (easy to modify), which helps to create fast and dynamic HTML5 Display Ads / HTML5 Banner. Set up your project with multiple banner and fill them with markup or place prepared js or scss files. Create templates for banner like Wallpapers or Fireplace Ads and view them as one ad, while designing. Have a multiple export for different advertisers. The HTML5 markup is mainly created by the tool itself. When creating HTML5 markup in the **`index.php`** file for each banner, just place the contents you need within the **`<body></body>`** tag and style them as usual. Some examples, to show the usage, are available in the tool.
 
 ---
 
 ## Requirements
 
 * [php 5.6+](http://php.net/downloads.php)
-* [node.js](https://nodejs.org/en/)
-* [composer](https://getcomposer.org)
+* [node.js](https://nodejs.org/en/) (for CSS autoprefixer)
+* [composer](https://getcomposer.org) (run install in `/app/`)
 
 No suitable VM available? [Download my.](https://bitbucket.org/madebykittel/debian_9.5_stretch-vm-for-virtualbox-macos)
 
@@ -30,14 +30,16 @@ Created on macOS 10.13.6 via [VirtualBox 5.2.12](https://virtualbox.org/)
 * Display file weight
 * Place markup in files
 * Place prepared files
-* Compress banners
+* Style with SCSS
+* CSS autoprefixer
+* CSS autonamespace
+* Unused CSS detection
+* Separated CSS compressor
+* Minified output
 * Multiple export for different advertisers
 * Less kb JavaScript animation library
 * Tree view with search bar
 * Archive old projects
-* Style with SCSS
-* CSS Autoprefixer
-* CSS Autonamespace
 * Hyphenate content
 * Set dynamic or static placeholder
 
@@ -45,7 +47,7 @@ Created on macOS 10.13.6 via [VirtualBox 5.2.12](https://virtualbox.org/)
 
 ## Set up a project
 
-Set up your project with the **`project_config.json`** file in the root directory. Only the second array is "dynamic" to create subdirectories for banner with different dependencies. Place some constants in the last array to edit the banners globally or place them in each banner group. You'll find for each part of the constants a short description in the **`/app-assets/constants.php`** file. NOTE: After you created the project globally you will work with the **`project_config.json`** in each project.
+Set up your project with the global **`/project_config.json`** file in the root directory. Only the second array is "dynamic" to create subdirectories for banner with different dependencies. Place some constants in the last array to edit the banners globally or place them in each banner group. You'll find for each part of the constants a short description in the **`/constants.php`** file. NOTE: After you set up the project globally you will work with the **`project_config.json`** file in each project.
 
     {
         "project_dir": ["client","product","campagne","motif"],
@@ -97,6 +99,13 @@ Set up your project with the **`project_config.json`** file in the root director
                     [728,90],
                     ["WP_RIGHT_BOTTOM_728x90_160x600"]
                 ]
+            },
+            {
+                "wallpaper-rt": [
+                    [160,600],
+                    [728,90],
+                    ["WP_RIGHT_TOP_728x90_160x600"]
+                ]
             }
         ],
         "global_files": ["BASE_JS","FADE_JS","CLIENT_BASE_STYLES","CLIENT_INDEX_MARKUP","CLIENT_SCSS_MARKUP","CLIENT_JS_MARKUP","CLIENT_JS_FILE","CLIENT_SCSS_FILE"]
@@ -107,31 +116,37 @@ Set up your project with the **`project_config.json`** file in the root director
 
 ### hotkeys
 
+* `crtl + a` // call project config
 * `crtl + s` // refresh banner
-* `arrow keys`, `enter` // in tree
+* `arrow keys`, `enter` // navigate in tree
 
 ---
 
+Please, take a look in the `/constants.php` and `/placeholder.php` file.
+
 ### create templates
-Take a look into the `/banner-templates/` files. JSON files are required. NOTE: the key is important to match the right folder.
+Take a look into the `/banner-templates/*.json` files. JSON files are required. NOTE: the key is important to match the right folder.
 
 ### unusedCSS
-Matched only `getElementById`, `$(#id)`, `id: id`, `gid(id)`, `getElementsByClassName`, `addClass`, `hasClass`, `removeClass`, `$(.class)`, `class: class`, `cl: class` and `gcl(class)` in the JavaScript files and the function doesn't search HTML tags in the SCSS or JavaScript files (otherwise you'll get multiple unused HTML tags).
+Matched only `getElementById`, `$(#id)`, `id: id`, `gid(id)`, `getElementsByClassName`, `addClass`, `hasClass`, `removeClass`, `$(.class)`, `class: class`, `cl: class` and `gcl(class)` in the JavaScript files and the class doesn't search HTML tags in the SCSS or JavaScript files (otherwise you'll get multiple unused HTML tags).
 
 ### export
-Place the required advertiser scripts in `/js/advertiser-scripts/`. PHP files are required. Placeholder: `###banner_width###` `##banner_height###` or define your own in `/app-assets/placeholder.php`
+Place the necessary advertiser scripts in `/global-scripts/advertiser-scripts/head/*.php` or `/global-scripts/advertiser-scripts/body/*.php`. PHP files are required. Set placeholder: `###banner_width###`, `###banner_height###` or define your own in the `/placeholder.php` file.
 
 ### namespaceCSS
-The namespace is editable in the `/app-assets/constants.php` file. All constants are placeable for each banner group or globally for all banner in the last array.
+The namespace is editable in the `/constants.php` file. All constants are placeable for each banner group or globally for all banner in the last array.
 
 ### create markup
-Place your markup files in `/global-markups/` and link them to your projects with constants in the `/app-assets/constants.php` file. Only HTML, SCSS and JavaScript files, like examples. Placeholder: `###banner_width###` `##banner_height###` or define your own in `/app-assets/placeholder.php`
+Place your markup files in `/global-markups/` and link them to your projects with constants in the `/constants.php` file. Only HTML, SCSS and JavaScript files, like examples. Set placeholder: `###banner_width###`, `###banner_height###` or define your own in the `/placeholder.php` file.
 
 ### place files
-Place your prepared files in `/global-files/` and link them to your projects with constants in the `/app-assets/constants.php` file. Only SCSS and JavaScript files, like examples. Placeholder: `###banner_width###` `##banner_height###` or define your own in `/app-assets/placeholder.php`.
+Place your prepared files in `/global-files/` and link them to your projects with constants in the `/constants.php` file. Only SCSS and JavaScript files, like examples. Set placeholder: `###banner_width###`, `###banner_height###` or define your own in the `/placeholder.php` file.
 
 ### archive old projects
-Archive old projects in the tree view. You'll find the archived projects in `/banner-archive/`.
+Archive old projects in the tree view. You'll find the archived projects in `/banner-archive/` or define your own directory in the `/app/classes/zip.php` file.
+
+### CSS autoprefixer and compressor
+The autoprefixer and the compressor is optional because of the performance. If you think you don't need them, just set it on false in the `/constants.php` file.
 
 ---
 
@@ -171,11 +186,11 @@ When jQuery is not available.
 	fade();
 	alongPath();
 	colorSwap();
-	distortPath();
+	distortPath(); // (!!! NOTE: the new path has to have the same numbers of anchor as the old one!!!)
 	drawPath();
 	textTyping();
 
-Usage of all functions is explained in `/js/animation-library/` the files.
+Usage of all functions is explained in `/global-scripts/animation-library/*.js` the files.
 
 ---
 

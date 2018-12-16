@@ -8,22 +8,10 @@
     height: 600px;
     background-color: #CCC;
     overflow: hidden;
-    border-top: 1px solid #CCC;
+    border-left: 1px solid #CCC;
     border-right: 1px solid #CCC;
     border-bottom: 1px solid #CCC;
     box-sizing: border-box;
-
-    &::after {
-        position: absolute;
-        left: 0;
-        top: 90px;
-
-        content: "";
-
-        width: 1px;
-        height: 510px;
-        background-color: #CCC;
-    }
 }
 
 #sequence-one,

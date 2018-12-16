@@ -1,5 +1,5 @@
-vendor/
-!/*/vendor
+app/vendor/
+!/*/app/vendor
 
 composer.phar
 .DS_Store

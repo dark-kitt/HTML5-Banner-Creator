@@ -9,9 +9,21 @@
     background-color: #CCC;
     overflow: hidden;
     border-top: 1px solid #CCC;
+    border-right: 1px solid #CCC;
     border-left: 1px solid #CCC;
-    border-bottom: 1px solid #CCC;
     box-sizing: border-box;
+
+    &::after {
+        position: absolute;
+        left: 0;
+        top: 90px;
+
+        content: "";
+
+        height: 1px;
+        width: 568px;
+        background-color: #CCC;
+    }
 }
 
 #sequence-one,
