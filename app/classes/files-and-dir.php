@@ -434,7 +434,7 @@
 
             foreach ( $assets_files as $assets_file )
             {
-                copy( $assets_file, str_replace( '/assets' . basename($assets_file), '/_output' . basename($assets_file), $assets_file ) );
+                copy($dir . '/assets' . $assets_file, $dir . '/_output' . $assets_file);
             }
 
             $js_ani = '';
