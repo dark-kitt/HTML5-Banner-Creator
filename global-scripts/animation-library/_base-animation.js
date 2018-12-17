@@ -356,7 +356,7 @@ var gid = function(id) {
         if (hasClass(e, cls)) {
             if (e instanceof SVGElement) {
                 e.className.baseVal = e.className.baseVal.replace(/\s+/g, ' ');
-                if (e.className.match('(?:\\w|\\d)(?:\\s+|^)(' + cls + '\\b)(?:\\s+|$)(?:\\w|\\d)') === null) {
+                if (e.className.baseVal.match('(?:\\w|\\d)(?:\\s+|^)(' + cls + '\\b)(?:\\s+|$)(?:\\w|\\d)') === null) {
                     e.className.baseVal = e.className.baseVal.replace(getClassName(cls), '');
                 } else {
                     e.className.baseVal = e.className.baseVal.replace(getClassName(cls), ' ');
