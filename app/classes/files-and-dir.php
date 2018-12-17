@@ -62,6 +62,7 @@
                         continue;
                     }
                     if ( helper::array_values_int($banner[$length]) === false ) {
+                        array_push($global_files, $banner[$length]);
                         $const_dir[] = helper::get_const_dir($abs_path, $banner[$length]);
                         if (in_Array('NAMESPACE', $banner[$length])) {
                             $namespace = true;
@@ -148,7 +149,7 @@
                         {
                             $currFormats[] = key($format);
                             $subject = join($currFormats, ',');
-                            $count = preg_match_all('/' . key($format) . '\b/', $subject);
+                            $count = preg_match_all('/' . key($format) . '(?!\-|\_|\.|\:|\,|\;)\b/', $subject);
 
                             if ( in_Array(helper::build_duplicates(key($format), $count), $check) &&
                                  !file_exists( $abs_path . $directory . '/' . helper::build_duplicates(key($format), $count) ) )
