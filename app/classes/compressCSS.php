@@ -133,7 +133,7 @@
             foreach ($scss_ids as $id)
             {
                 $scss = $this->set_selector($scss, '/(\#)' . $id . '\b/', $count);
-                $html = $this->set_selector($html, '/(id(?(?=\s+)\s+)\=(?(?=\s+)\s+)\".*?)(' . $id . '\b.*?(?=\"))/', $count);
+                $html = $this->set_selector($html, '/(id(?(?=\s+)\s+)\=(?(?=\s+)\s+)\"[^"]*?)((?<!\-|\w)' . $id . '\b)/', $count);
                 foreach ($js_ids as $js_id) {
                     $js = $this->set_selector($js, $js_id[0] . $id . $js_id[1], $count);
                 }
