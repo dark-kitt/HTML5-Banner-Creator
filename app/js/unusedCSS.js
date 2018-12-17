@@ -16,7 +16,7 @@ $(document).ready(function() {
                 unusedCon.append('<ul class="clearfix">' +
                     '<li>' + v['identifier'] + '</li>' +
                     '<li>' + v['message'] + '</li>' +
-                    '<li>row: ' + v['line'].join('') + '</li>' +
+                    '<li>row: ' + v['line'].join(', ') + '</li>' +
                     '<li>' + v['directory'] + '</li>'+
                 '</ul>');
             });
