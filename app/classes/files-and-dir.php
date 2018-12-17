@@ -70,7 +70,7 @@
                     }
                 }
                 $const_dir[] = helper::get_const_dir($abs_path, $global_files);
-                $const_dir = helper::flatten_array($const_dir);
+                $const_dir = array_unique(helper::flatten_array($const_dir));
                 if (in_Array('NAMESPACE', $global_files))
                 {
                     $namespace = true;
