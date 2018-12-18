@@ -81,51 +81,51 @@
 
             $js_ids = [
                 [
-                    '/((?:getElementById\b)\(.*?)(',
-                    '\b)/'
+                    '/((?:getElementById\b)\(.*?)(?<!\-|\w)(',
+                    '\b)(?!\-)/'
                 ],
                 [
                     '/((?:\$)\(.*?(?=\#)\#)(',
-                    '\b)/'
+                    '\b)(?!\-)/'
                 ],
                 [
-                    '/((?:id\b)\:.*?)(',
-                    '\b)/'
+                    '/((?<!\-|\w)(?:id\b)\:.*?)(?<!\-|\w)(',
+                    '\b)(?!\-)/'
                 ],
                 [
-                    '/((?:gid\b)\(.*?)(',
-                    '\b)/'
+                    '/((?:gid\b)\(.*?)(?<!\-|\w)(',
+                    '\b)(?!\-)/'
                 ]
             ];
 
             $js_classes = [
                 [
-                    '/((?:getElementsByClassName\b)\(.*?)(',
-                    '\b)/'
+                    '/((?:getElementsByClassName\b)\(.*?)(?<!\-|\w)(',
+                    '\b)(?!\-)/'
                 ],
                 [
                     '/((?:\$)\(.*?(?=\.)\.)(',
-                    '\b)/'
+                    '\b)(?!\-)/'
                 ],
                 [
-                    '/((?:\.addClass\b|\.hasClass\b|\.removeClass\b)\(.*?)(',
-                    '\b)/'
+                    '/((?:\.addClass\b|\.hasClass\b|\.removeClass\b)\(.*?)(?<!\-|\w)(',
+                    '\b)(?!\-)/'
                 ],
                 [
                     '/((?:removeClass\b|hasClass\b)\(.*?(?=\,).*?(?=\'|\")(?:\'|\").*?)(',
-                    '\b)/'
+                    '\b)(?!\-)/'
                 ],
                 [
-                    '/((?:class\b)\:.*?)(',
-                    '\b)/'
+                    '/((?:class\b)\:.*?)(?<!\-|\w)(',
+                    '\b)(?!\-)/'
                 ],
                 [
-                    '/((?:cl\b)\:.*?)(',
-                    '\b)/'
+                    '/((?<!\-|\w)(?:cl\b)\:.*?)(?<!\-|\w)(',
+                    '\b)(?!\-)/'
                 ],
                 [
-                    '/((?:gcl\b)\(.*?)(',
-                    '\b)/'
+                    '/((?:gcl\b)\(.*?)(?<!\-|\w)(',
+                    '\b)(?!\-)/'
                 ]
             ];
 
@@ -133,7 +133,7 @@
             foreach ($scss_ids as $id)
             {
                 $scss = $this->set_selector($scss, '/(\#)' . $id . '\b(?!\-|\w)/', $count);
-                $html = $this->set_selector($html, '/(id(?(?=\s+)\s+)\=(?(?=\s+)\s+)\"[^"]*?)((?<!\-|\w)' . $id . '\b)/', $count);
+                $html = $this->set_selector($html, '/(id(?(?=\s+)\s+)\=(?(?=\s+)\s+)\"[^"]*?)((?<!\-|\w)' . $id . '\b(?!\-|\w))/', $count);
                 foreach ($js_ids as $js_id) {
                     $js = $this->set_selector($js, $js_id[0] . $id . $js_id[1], $count);
                 }
@@ -145,7 +145,7 @@
             foreach ($scss_classes as $class)
             {
                 $scss = $this->set_selector($scss, '/(\.)' . $class . '\b(?!\-|\w)/', $count);
-                $html = $this->set_selector($html, '/(class\b(?(?=\s+)\s+)\=(?(?=\s+)\s+).*?(?|(?:(?=\s+)\s+)|(?:(?=\")\")|(?:(?=\')\')))(' . $class . '\b.*?(?=\"))/', $count);
+                $html = $this->set_selector($html, '/(class\b(?(?=\s+)\s+)\=(?(?=\s+)\s+).*?(?|(?:(?=\s+)\s+)|(?:(?=\")\")|(?:(?=\')\')))(' . $class . '\b(?!\-|\w))/', $count);
                 foreach ($js_classes as $js_class) {
                     $js = $this->set_selector($js, $js_class[0] . $class . $js_class[1], $count);
                 }
@@ -175,6 +175,27 @@
                             $content
                         );
             return $content;
+        }
+
+        /*
+         * search and replace value in array
+         */
+        private function replace_value($item, $search ,$replacement)
+        {
+            array_walk_recursive(
+                $item,
+                function (&$value) use ($search, $replacement) {
+                    if ($value instanceof stdClass)
+                    {
+                        $this->replace_value($value, $search, $replacement);
+                    }
+                    elseif (preg_match('/(?<!\-)' . $search . '\b(?!\-)/', $value))
+                    {
+                        $value = $replacement;
+                    }
+                }
+            );
+            return $item;
         }
 
         /*
@@ -333,27 +354,6 @@
         private function filter_unique_flatten_array(array $array)
         {
             return array_filter( array_unique( $this->flatten_array( $array ) ), function($value) { return $value !== ''; } );
-        }
-
-        /*
-         * search and replace value in array
-         */
-        private function replace_value($item, $search ,$replacement)
-        {
-            array_walk_recursive(
-                $item,
-                function (&$value) use ($search, $replacement) {
-                    if ($value instanceof stdClass)
-                    {
-                        $this->replace_value($value, $search, $replacement);
-                    }
-                    elseif (preg_match('/'.$value.'\b/', $search))
-                    {
-                        $value = $replacement;
-                    }
-                }
-            );
-            return $item;
         }
 
     }

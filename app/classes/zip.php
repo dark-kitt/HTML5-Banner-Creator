@@ -37,9 +37,12 @@
                     if (file_exists($abs_path . $banner . '/_output/index.html')) {
 
                         $config = json_decode(file_get_contents($abs_path . $banner . '/banner_config.json'));
+
+                        $head_script = '';
                         if (file_exists($abs_path . AD_SCRIPT_HEAD . '/' . $script . '.php')) {
                             $head_script = helper::match_placeholder(file_get_contents($abs_path . AD_SCRIPT_HEAD . '/' . $script . '.php'), $config);
                         }
+                        $body_script = '';
                         if (file_exists($abs_path . AD_SCRIPT_BODY . '/' . $script . '.php')) {
                             $body_script = helper::match_placeholder(file_get_contents($abs_path . AD_SCRIPT_BODY . '/' . $script . '.php'), $config);
                         }
@@ -63,7 +66,8 @@
 
                         foreach ( $assets as $file )
                         {
-                            $zip->addFile( $file, $script . '/' . substr($dir_name, 1) . $file );
+                            $file_dir = $abs_path . $config->banner_config->banner_dir . '/_output' . $file;
+                            $zip->addFile( $file_dir, $script . '/' . substr($dir_name, 1) . $file );
                         }
 
                         $zip->addFromString( $script . '/' . substr($dir_name, 1) . '/index.html', preg_replace( '/\r|\n/', '', $html ));

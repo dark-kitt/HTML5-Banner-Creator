@@ -83,61 +83,61 @@
             $js_ids = [
                 [
                     $selectors->js->id->get_id,
-                    '/((?:getElementById\b)\(.*?)(',
-                    '\b)/'
+                    '/((?:getElementById\b)\(.*?)(?<!\-|\w)(',
+                    '\b)(?!\-)/'
                 ],
                 [
                     $selectors->js->id->id_jQuery,
                     '/((?:\$)\(.*?(?=\#)\#)(',
-                    '\b)/'
+                    '\b)(?!\-)/'
                 ],
                 [
                     $selectors->js->id->id_obj,
-                    '/((?:id\b)\:.*?)(',
-                    '\b)/'
+                    '/((?<!\-|\w)(?:id\b)\:.*?)(?<!\-|\w)(',
+                    '\b)(?!\-)/'
                 ],
                 [
                     $selectors->js->id->gid,
-                    '/((?:gid\b)\(.*?)(',
-                    '\b)/'
+                    '/((?:gid\b)\(.*?)(?<!\-|\w)(',
+                    '\b)(?!\-)/'
                 ]
             ];
 
             $js_classes = [
                 [
                     $selectors->js->class->get_class,
-                    '/((?:getElementsByClassName\b)\(.*?)(',
-                    '\b)/'
+                    '/((?:getElementsByClassName\b)\(.*?)(?<!\-|\w)(',
+                    '\b)(?!\-)/'
                 ],
                 [
                     $selectors->js->class->class_jQuery,
                     '/((?:\$)\(.*?(?=\.)\.)(',
-                    '\b)/'
+                    '\b)(?!\-)/'
                 ],
                 [
                     $selectors->js->class->arh_jQuery,
-                    '/((?:\.addClass\b|\.hasClass\b|\.removeClass\b)\(.*?)(',
-                    '\b)/'
+                    '/((?:\.addClass\b|\.hasClass\b|\.removeClass\b)\(.*?)(?<!\-|\w)(',
+                    '\b)(?!\-)/'
                 ],
                 [
                     $selectors->js->class->rhClass,
                     '/((?:removeClass\b|hasClass\b)\(.*?(?=\,).*?(?=\'|\")(?:\'|\").*?)(',
-                    '\b)/'
+                    '\b)(?!\-)/'
                 ],
                 [
                     $selectors->js->class->addClass,
-                    '/((?:class\b)\:.*?)(',
-                    '\b)/'
+                    '/((?:class\b)\:.*?)(?<!\-|\w)(',
+                    '\b)(?!\-)/'
                 ],
                 [
                     $selectors->js->class->class_obj,
-                    '/((?:cl\b)\:.*?)(',
-                    '\b)/'
+                    '/((?<!\-|\w)(?:cl\b)\:.*?)(?<!\-|\w)(',
+                    '\b)(?!\-)/'
                 ],
                 [
                     $selectors->js->class->gcl,
-                    '/((?:gcl\b)\(.*?)(',
-                    '\b)/'
+                    '/((?:gcl\b)\(.*?)(?<!\-|\w)(',
+                    '\b)(?!\-)/'
                 ]
             ];
 
@@ -147,17 +147,17 @@
                 {
                     $html = $this->match_set_namespace(
                         $html,
-                        '/(id(?(?=\s+)\s+)\=(?(?=\s+)\s+)\".*?)(' . $value . '\b.*?(?=\"))/'
+                        '/(id(?(?=\s+)\s+)\=(?(?=\s+)\s+)\"[^"]*?)((?<!\-|\w)' . $value . '\b(?!\-|\w))/'
                     );
                     /* WORKAROUND: match xlink:href in <svg> */
                     $html = preg_replace_callback(
                                     '/' . REGEX_SVG_ALL .'/',
                                     function ($match) use($value) {
-                                        if (preg_match('/(?:xlink:href|href).*?\#' . $value . '\b/', $match[0]))
+                                        if (preg_match('/(?:xlink:href|href|fill|filter|mask|clip-path).*?(?=\#)(?<!\-)\#' . $value . '\b(?!\-)/', $match[0]))
                                         {
                                             return $match[0] = $this->match_set_namespace(
                                                 $match[0],
-                                                '/((?:xlink:href|href).*?\#)(' . $value . '\b)/'
+                                                '/((?:xlink:href|href|fill|filter|mask|clip-path).*?(?=\#)(?<!\-)\#)(' . $value . '\b)(?!\-)/'
                                             );
                                         }
                                         else
@@ -175,7 +175,7 @@
                 {
                     $html = $this->match_set_namespace(
                         $html,
-                        '/(class\b(?(?=\s+)\s+)\=(?(?=\s+)\s+).*?(?|(?:(?=\s+)\s+)|(?:(?=\")\")|(?:(?=\')\')))(' . $value . '\b.*?(?=\"))/'
+                        '/(class\b(?(?=\s+)\s+)\=(?(?=\s+)\s+).*?(?|(?:(?=\s+)\s+)|(?:(?=\")\")|(?:(?=\')\')))(' . $value . '\b(?!\-|\w))/'
                     );
                 }
             }
@@ -185,7 +185,7 @@
                 {
                     $scss = $this->match_set_namespace(
                         $scss,
-                        '/(\#)(' . $value . '\b)/'
+                        '/(\#)(' . $value . '\b)(?!\-|\w)/'
                     );
                 }
             }
@@ -195,7 +195,7 @@
                 {
                     $scss = $this->match_set_namespace(
                         $scss,
-                        '/(\.)(' . $value . '\b)/'
+                        '/(\.)(' . $value . '\b)(?!\-|\w)/'
                     );
                 }
             }
@@ -237,7 +237,7 @@
             $content = preg_replace_callback(
                             $pattern,
                             function($match) {
-                                if ( preg_match('/' . constant('NAMESPACE') . '\b/', $match[0]) )
+                                if ( preg_match('/' . constant('NAMESPACE') . $match[2] . '\w+\b/', $match[0]) )
                                 {
                                     return $match[1] . $match[2];
                                 }
