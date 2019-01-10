@@ -1,7 +1,7 @@
 HTML5 Banner Creator
 ==============
 
-A small web application based on php (easy to modify), which helps to create fast and dynamic HTML5 Display Ads / HTML5 Banner. Set up your project with multiple banner and fill them with markup or place prepared js or scss files. Create templates for banner like Wallpapers or Fireplace Ads and view them as one ad, while designing. Have a multiple export for different advertisers. The HTML5 markup is mainly created by the tool itself. When creating HTML5 markup in the **`index.php`** file for each banner, just place the contents you need within the **`<body></body>`** tag and style them as usual. Some examples, to show the usage, are available in the tool.
+A small web application based on php (easy to modify), which helps to create fast and dynamic HTML5 Display Ads / HTML5 Banner. Set up your project with multiple banner and fill them with markup or place prepared js or scss files. Create templates for banner like Wallpapers or Fireplace Ads and view them as one ad, while designing. The HTML5 markup is mainly created by the tool itself. While creating HTML5 markup in the **`index.php`** file for each banner, just place the contents you need within the **`<body></body>`** tag and style them as usual. Have a multiple export for different advertisers and get information about unused CSS styles, to keep the file size small. Some examples, to show the usage, are available in the tool.
 
 ---
 
@@ -47,7 +47,7 @@ Created on macOS 10.13.6 via [VirtualBox 5.2.12](https://virtualbox.org/)
 
 ## Set up a project
 
-Set up your project with the global **`/project_config.json`** file in the root directory. Only the second array is "dynamic" to create subdirectories for banner with different dependencies. Place some constants in the last array to edit the banners globally or place them in each banner group. You'll find for each part of the constants a short description in the **`/constants.php`** file. NOTE: After you set up the project globally you will work with the **`project_config.json`** file in each project.
+Set up your project with the global **`/project_config.json`** file in the root directory. Only the second array is "dynamic" to create subdirectories for banner with different dependencies. Place some constants in the last array to edit the banners globally or place them in each banner group. You'll find for each part of the constants a short description in the **`/constants.php`** file. NOTE: After you set up the project globally, you'll work with the **`project_config.json`** file in each project.
 
     {
         "project_dir": ["client","product","campagne","motif"],
@@ -122,7 +122,7 @@ Set up your project with the global **`/project_config.json`** file in the root 
 
 ---
 
-Please, take a look in the `/constants.php` and `/placeholder.php` file.
+Take a look in the `/constants.php` and `/placeholder.php` file!
 
 ### create templates
 Take a look into the `/banner-templates/*.json` files. JSON files are required. NOTE: the key is important to match the right folder.
