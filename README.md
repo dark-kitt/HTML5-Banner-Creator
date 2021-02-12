@@ -13,17 +13,6 @@ A small web application based on php (easy to modify), which helps to create fas
 
 No suitable VM available? [Download my.](https://bitbucket.org/madebykittel/debian_9.5_stretch-vm-for-virtualbox-macos)
 
-### My VM
-* Debian 9.5.0 amd64 netinst
-* Apache 2.4.25
-* php 7.0.3
-* php 7.0-zip
-* node.js v10.8.0
-* mysql 15.1
-* curl 7.52.1
-
-Created on macOS 10.13.6 via [VirtualBox 5.2.12](https://virtualbox.org/)
-
 ## Features
 
 * Set up multiple banners
