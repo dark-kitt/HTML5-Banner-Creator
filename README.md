@@ -11,8 +11,6 @@ A small web application based on php (easy to modify), which helps to create fas
 * [node.js](https://nodejs.org/en/) (for CSS autoprefixer)
 * [composer](https://getcomposer.org) (run install in `/app/`)
 
-No suitable VM available? [Download my.](https://bitbucket.org/madebykittel/debian_9.5_stretch-vm-for-virtualbox-macos)
-
 ## Features
 
 * Set up multiple banners
